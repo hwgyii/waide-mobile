@@ -24,6 +24,11 @@ export const logIn = (options) => {
   return requestBuilder.executeOpenPostRequest(url, options);
 };
 
+export const getUser = () => {
+  const url = `${getBaseUrl()}/user/me`;
+  return requestBuilder.executeAuthenticatedGetRequest(url);
+};
+
 export const checkoutOrder = (options) => {
   const url = `${getBaseUrl()}/sales/create`;
   return requestBuilder.executeAuthenticatedPostRequest(url, options);

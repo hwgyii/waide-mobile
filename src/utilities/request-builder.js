@@ -8,9 +8,9 @@ const getBody = (options) => {
   return get(options, "body", {});
 }
 
-const buildAuthenticatedHeaders = () => {
+const buildAuthenticatedHeaders = async () => {
   try{
-    const currentSession = getCurrentSession();
+    const currentSession = await getCurrentSession();
 
     if (!currentSession) {
       // eslint-disable-next-line no-throw-literal
@@ -35,18 +35,22 @@ export const executeOpenPatchRequest = (url, options) => {
   return axios.patch(url, getBody(options), {headers: {"Access-Control-Allow-Origin": '*'}});
 }
 
-export const executeAuthenticatedPostRequest = (url, options={}) => {
-  return axios.post(url, getBody(options), { headers: buildAuthenticatedHeaders() });
+export const executeAuthenticatedPostRequest = async (url, options={}) => {
+  const headers = await buildAuthenticatedHeaders();
+  return axios.post(url, getBody(options), { headers });
 }
 
-export const executeAuthenticatedGetRequest = (url) => {
-  return axios.get(url, { headers: buildAuthenticatedHeaders() });
+export const executeAuthenticatedGetRequest = async (url) => {
+  const headers = await buildAuthenticatedHeaders();
+  return await axios.get(url, { headers });
 }
 
-export const executeAuthenticatedDeleteRequest = (url) => {
-  return axios.delete(url, { headers: buildAuthenticatedHeaders() });
+export const executeAuthenticatedDeleteRequest = async (url) => {
+  const headers = await buildAuthenticatedHeaders();
+  return await axios.delete(url, { headers });
 }
 
-export const executeAuthenticatedPatchRequest = (url, options={}) => {
-  return axios.patch(url, getBody(options), { headers: buildAuthenticatedHeaders() });
+export const executeAuthenticatedPatchRequest = async (url, options={}) => {
+  const headers = await buildAuthenticatedHeaders();
+  return axios.patch(url, getBody(options), { headers });
 }
