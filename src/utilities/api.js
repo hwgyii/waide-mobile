@@ -19,6 +19,11 @@ export const getBaseUrl = () => {
 
 //@ API ROUTES
 
+export const signUp = (options) => {
+  const url = `${getBaseUrl()}/user/create`;
+  return requestBuilder.executeOpenPostRequest(url, options);
+};
+
 export const logIn = (options) => {
   const url = `${getBaseUrl()}/user/login`;
   return requestBuilder.executeOpenPostRequest(url, options);

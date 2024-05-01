@@ -2,16 +2,16 @@ import { Box, Button, ButtonIcon, Text, VStack, Image, Input, InputField, FormCo
 
 import { ChevronLeftIcon } from "@gluestack-ui/themed";
 
-import AppLogo from "../assets/AppLogo.png";
-import LoginImage from "../assets/Login.png";
+import AppLogo from "../../assets/AppLogo.png";
+import LoginImage from "../../assets/Login.png";
 import { useState } from "react";
 
 import AsyncStorage from "@react-native-async-storage/async-storage"
 
 
-import * as api from "../utilities/api";
+import * as api from "../../utilities/api";
 
-export default function LoginCard() {
+export default function SignupBusiness({ setSignupToRender }) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -34,7 +34,7 @@ export default function LoginCard() {
   //Handle back button
   const onBack = (e) => {
     e.preventDefault();
-    alert("Back Button Clicked");
+    setSignupToRender(null);
   };
 
   return (
@@ -86,7 +86,7 @@ export default function LoginCard() {
           paddingTop: 10,
         }}
       >
-        <Text size="lg">Login</Text>
+        <Text size="lg">Signup - Business</Text>
       </Box>
       {/*Login Forms*/}
       <VStack

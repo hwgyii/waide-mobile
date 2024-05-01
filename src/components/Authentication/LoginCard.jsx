@@ -2,16 +2,16 @@ import { Box, Button, ButtonIcon, Text, VStack, Image, Input, InputField, FormCo
 
 import { ChevronLeftIcon } from "@gluestack-ui/themed";
 
-import AppLogo from "../assets/AppLogo.png";
-import LoginImage from "../assets/Login.png";
+import AppLogo from "../../assets/AppLogo.png";
+import LoginImage from "../../assets/Login.png";
 import { useState } from "react";
 
 import AsyncStorage from "@react-native-async-storage/async-storage"
 
 
-import * as api from "../utilities/api";
+import * as api from "../../utilities/api";
 
-export default function SignupCard() {
+export default function LoginCard({ setAuthenticationToRender }) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -27,14 +27,14 @@ export default function SignupCard() {
         console.log("Login Successful", await AsyncStorage.getItem("sessionToken"), await AsyncStorage.getItem("user"));
       }
     } catch (error) {
-      alert(error);
+      alert(error.response.data.message);
     }
   };
 
   //Handle back button
   const onBack = (e) => {
     e.preventDefault();
-    alert("Back Button Clicked");
+    setAuthenticationToRender("authentication");
   };
 
   return (
