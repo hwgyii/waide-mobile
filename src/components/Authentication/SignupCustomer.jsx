@@ -15,8 +15,8 @@ export default function SignupCustomer({ setSignupToRender, setAuthenticationToR
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
 
-  //Handle login
-  const onLogin = async (e) => {
+  //Handle signup
+  const onSignup = async (e) => {
     e.preventDefault();
     try {
       const body = {
@@ -27,13 +27,18 @@ export default function SignupCustomer({ setSignupToRender, setAuthenticationToR
         confirmPassword,
       };
 
-      if (password !== confirmPassword) {
-        return alert("Passwords do not match");
-      };
-
       if (!firstName || !lastName || !email || !password || !confirmPassword) {
         return alert("All fields are required");
       };
+
+      if (email.indexOf("@") === -1 || email.indexOf(".") === -1) {
+        return alert("Invalid email address");
+      };
+
+      if (password !== confirmPassword) {
+        return alert("Passwords do not match");
+      };
+      
       const response = await api.signUp({ body });
 
       console.log(JSON.stringify(response, null, 2));
@@ -85,7 +90,7 @@ export default function SignupCustomer({ setSignupToRender, setAuthenticationToR
       >
         <Image source={AppLogo} alt="App Logo" sx={{ width: '100%', height: '100%', resizeMode: 'contain' }}/>
       </Box>
-      {/* Login Image */}
+      {/* Signup Customer Image */}
       <Box
         sx={{
           width: "100%",
@@ -93,9 +98,9 @@ export default function SignupCustomer({ setSignupToRender, setAuthenticationToR
           height: "17.5%",
         }}
       >
-        <Image source={SignupCustomerImage} alt="Login Image" sx={{ width: '100%', height: '100%', resizeMode: 'contain' }}/>
+        <Image source={SignupCustomerImage} alt="Signup Customer Image" sx={{ width: '100%', height: '100%', resizeMode: 'contain' }}/>
       </Box>
-      {/* Login Text */}
+      {/* Signup Customer Text */}
       <Box
         sx={{
           display: "flex",
@@ -106,7 +111,7 @@ export default function SignupCustomer({ setSignupToRender, setAuthenticationToR
       >
         <Text fontSize={32}>Signup - Customer</Text>
       </Box>
-      {/*Login Forms*/}
+      {/*Signup Customer Forms*/}
       <VStack
         space="md"
         sx={{
@@ -168,6 +173,8 @@ export default function SignupCustomer({ setSignupToRender, setAuthenticationToR
           >
             <InputField
               type="email"
+              inputMode="email"
+              keyboardType="email-address"
               placeholder="Email address"
               value={email}
               onChangeText={(value) => {setEmail(value)}}
@@ -205,7 +212,7 @@ export default function SignupCustomer({ setSignupToRender, setAuthenticationToR
             }}
           >
             <Button
-              onPress={(e) => {onLogin(e)}}
+              onPress={(e) => {onSignup(e)}}
             >
               <ButtonText>Signup</ButtonText>
             </Button>

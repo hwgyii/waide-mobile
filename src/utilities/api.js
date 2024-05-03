@@ -24,6 +24,11 @@ export const signUp = (options) => {
   return requestBuilder.executeOpenPostRequest(url, options);
 };
 
+export const signUpBusiness = (options) => {
+  const url = `${getBaseUrl()}/establishment/create`;
+  return requestBuilder.executeOpenPostRequest(url, options);
+};
+
 export const logIn = (options) => {
   const url = `${getBaseUrl()}/user/login`;
   return requestBuilder.executeOpenPostRequest(url, options);

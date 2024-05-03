@@ -7,6 +7,7 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 import * as api from "./src/utilities/api";
 
 import Authentication from "./src/pages/Authentication";
+import Inventories from "./src/components/Inventories/Inventories.jsx";
 
 
 export default function App() {

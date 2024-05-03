@@ -19,6 +19,10 @@ export default function LoginCard({ setAuthenticationToRender }) {
   const onLogin = async (e) => {
     e.preventDefault();
     try {
+      if (email.indexOf("@") === -1 || email.indexOf(".") === -1) {
+        return alert("Invalid email address");
+      };
+      
       const response = await api.logIn({body: {email: email, password: password}});
       if (response.status === 200) {
         await AsyncStorage.setItem("sessionToken", response.data.sessionToken);
@@ -107,6 +111,8 @@ export default function LoginCard({ setAuthenticationToRender }) {
           >
             <InputField
               type="email"
+              inputMode="email"
+              keyboardType="email-address"
               placeholder="Email address..."
               value={email}
               onChangeText={(value) => {setEmail(value)}}
