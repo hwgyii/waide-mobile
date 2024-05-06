@@ -5,7 +5,7 @@ import { useState, useMemo, useCallback, useEffect } from "react";
 import BottomSheet from "@gorhom/bottom-sheet";
 import InventoryCheckout from "./InventoryCheckout";
 
-export default function InventoryBottomSheet({ orders, selectedInventories, totalPrice }) {
+export default function InventoryBottomSheet({ orders, selectedInventories, totalPrice, onClearOrders }) {
   const snapPoints = useMemo(() => ['15%', '95%'], []);
   const [index, setIndex] = useState(0);
   const [checkingOut, setCheckingOut] = useState(false);
@@ -37,6 +37,12 @@ export default function InventoryBottomSheet({ orders, selectedInventories, tota
       justifyContent: 'center',
     }
   });
+
+  const onClearBottomSheet = () => {
+    onClearOrders();
+    setIndex(0);
+    setCheckingOut(false);
+  };
 
   function ExtendedBottomSheet() {
     return (
@@ -106,6 +112,7 @@ export default function InventoryBottomSheet({ orders, selectedInventories, tota
                 marginTop: 7
               }}
               onPress={() => setCheckingOut(true)}
+              isDisabled={selectedInventories === 0}
             >
               <Text>Checkout</Text>
             </Button>
@@ -154,6 +161,7 @@ export default function InventoryBottomSheet({ orders, selectedInventories, tota
                           borderRadius: 24,
                         }}
                         onPress={() => setCheckingOut(true)}
+                        isDisabled={selectedInventories === 0}
                       >
                         <Text>Checkout</Text>
                       </Button>
@@ -162,7 +170,7 @@ export default function InventoryBottomSheet({ orders, selectedInventories, tota
                 :
                   <ExtendedBottomSheet />
             :
-              <InventoryCheckout orders={orders} selectedInventories={selectedInventories} totalPrice={totalPrice} />
+              <InventoryCheckout orders={orders} selectedInventories={selectedInventories} totalPrice={totalPrice} onClearBottomSheet={onClearBottomSheet} />
         }
         <Box>
         </Box>

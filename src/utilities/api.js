@@ -39,6 +39,16 @@ export const getUser = () => {
   return requestBuilder.executeAuthenticatedGetRequest(url);
 };
 
+export const getInventories = (options) => {
+  const url = `${getBaseUrl()}/inventory/${get(options, "establishmentId")}`;
+  return requestBuilder.executeAuthenticatedGetRequest(url);
+};
+
+export const getMyEstablishment = () => {
+  const url = `${getBaseUrl()}/establishment/me`;
+  return requestBuilder.executeAuthenticatedGetRequest(url);
+};
+
 export const checkoutOrder = (options) => {
   const url = `${getBaseUrl()}/sales/create`;
   return requestBuilder.executeAuthenticatedPostRequest(url, options);

@@ -8,12 +8,15 @@ import { useState } from "react";
 
 import AsyncStorage from "@react-native-async-storage/async-storage"
 
-
 import * as api from "../../utilities/api";
+
+import { useDispatch } from "react-redux";
+import { getAuth, getEstablishment } from "../../redux/reducers/auth";
 
 export default function LoginCard({ setAuthenticationToRender }) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const dispatch = useDispatch();
 
   //Handle login
   const onLogin = async (e) => {
@@ -28,7 +31,11 @@ export default function LoginCard({ setAuthenticationToRender }) {
         await AsyncStorage.setItem("sessionToken", response.data.sessionToken);
         await AsyncStorage.setItem("user", JSON.stringify(response.data.user));
 
-        console.log("Login Successful", await AsyncStorage.getItem("sessionToken"), await AsyncStorage.getItem("user"));
+        console.log(JSON.stringify(response.data, null, 2));
+
+        dispatch(getAuth(response.data.user));
+
+        if (response.data.user.role === 1 && response.data.establishment) dispatch(getEstablishment(response.data.establishment));
       }
     } catch (error) {
       alert(error.response.data.message);

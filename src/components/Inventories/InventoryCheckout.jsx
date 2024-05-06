@@ -1,6 +1,41 @@
 import { Box, Divider, Text, VStack, Button } from "@gluestack-ui/themed";
 
-export default function InventoryCheckout({ orders, selectedInventories, totalPrice }) {
+import * as api from "../../utilities/api";
+
+import { useDispatch } from "react-redux";
+import { updateInventories } from "../../redux/reducers/inventory";
+
+export default function InventoryCheckout({ orders, selectedInventories, totalPrice, onClearBottomSheet }) {
+  const dispatch = useDispatch();
+  const handleCheckout = async (e, isCompleted) => {
+    try {
+      e.preventDefault();
+
+      const response = await api.checkoutOrder({ body: {
+        orders,
+        selectedInventories,
+        totalPrice,
+        isCompleted
+      }});
+
+      if (response.status === 200) {
+        onClearBottomSheet();
+        dispatch(updateInventories(response.data.inventories));        
+        alert(response.data.message);
+        // NOT YET IMPLEMENTED
+        // ADD SETTING BOTTOM SHEET INDEX TO 0 [DONE onClearBottomSheet]
+        // ADD CLEARING ORDERS [DONE onClearBottomSheet -> onClearOrders]
+        // ADD CLEARING SELECTED INVENTORIES [DONE onClearBottomSheet -> onClearOrders]
+        // ADD CLEARING TOTAL PRICE [DONE onClearBottomSheet -> onClearOrders]
+        // ADD SETTING CHECKING OUT TO FALSE [DONE onClearBottomSheet]
+        // ADD REDUX DISPATCH TO UPDATE THE QUANTITY OF INVENTORIES [TO DO HERE]
+      }
+    } catch (error) {
+      if (error.response && error.response.data.message) {
+        alert(error.response.data.message);
+      };
+    }
+  };
   return(
     <VStack>
       <Box
@@ -86,7 +121,7 @@ export default function InventoryCheckout({ orders, selectedInventories, totalPr
                 marginTop: 7,
                 marginRight: "5%",
               }}
-              onPress={() => {console.log("Preparing..")}}
+              onPress={(e) => {handleCheckout(e, false)}}
             >
               <Text color="black">Prepare</Text>
             </Button>
@@ -100,7 +135,7 @@ export default function InventoryCheckout({ orders, selectedInventories, totalPr
                 borderRadius: 24,
                 marginTop: 7
               }}
-              onPress={() => {console.log(orders)}}
+              onPress={(e) => {handleCheckout(e, true)}}
             >
               <Text color="black">Checkout</Text>
             </Button>

@@ -1,7 +1,6 @@
-import { useEffect, useState } from "react";
-import { Box, Button, Pressable, ScrollView } from "@gluestack-ui/themed";
-import { Text, SafeAreaView, Dimensions } from "react-native";
-import { GestureHandlerRootView } from "react-native-gesture-handler";
+import { useState } from "react";
+import { Box, Button, Pressable, } from "@gluestack-ui/themed";
+import { Text, } from "react-native";
 
 export default function InventoryCard({ inventory, index, order, onSetOrder }) {
   const [isPressed, setIsPressed] = useState(false);
@@ -44,10 +43,10 @@ export default function InventoryCard({ inventory, index, order, onSetOrder }) {
             backgroundColor: "$white",
           }}
         >
-          <Button onPress={() => setOrderSize((prev) => prev !== inventory.quantity ? prev + 1 : prev)}><Text>+</Text></Button>
+          <Button onPress={() => setOrderSize((prev) => prev !== inventory.quantity ? prev + 1 : prev)} isDisabled={inventory.quantity === 0}><Text>+</Text></Button>
           <Text>{orderSize}</Text>
-          <Button onPress={() => setOrderSize((prev) => prev > 0 ? prev - 1 : 0 )} ><Text>-</Text></Button>
-          <Button onPress={onDoneGetOrderSize}><Text>Done</Text></Button>
+          <Button onPress={() => setOrderSize((prev) => prev > 0 ? prev - 1 : 0 )} isDisabled={inventory.quantity === 0}><Text>-</Text></Button>
+          <Button onPress={onDoneGetOrderSize} isDisabled={inventory.quantity === 0}><Text>Done</Text></Button>
         </Box>
       </Box>
     );
@@ -84,11 +83,14 @@ export default function InventoryCard({ inventory, index, order, onSetOrder }) {
           <Box
             sx={{
               height: 50,
-              width: "100%",
+              width: "60%",
               flexDirection: "row",
               justifyContent: "space-between",
               alignItems: "center",
               bgColor: "#F00B51",
+              position: "absolute",
+              marginTop: "5%",
+              marginLeft: "20%"
             }}
           >
             <OrderSize />
