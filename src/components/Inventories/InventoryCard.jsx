@@ -74,12 +74,15 @@ export default function InventoryCard({ inventory, index, order, onSetOrder }) {
 
           </Box>
           {/* PRODUCT NAME */}
-          <Text>{inventory.name}</Text>
+          <Box>
+            <Text>{inventory.name}</Text>
+            {inventory.quantity === 0 ? <Text style={{ color: "red" }}>Out of Stock</Text> : inventory.quantity <= 5 ? <Text style={{ color: "red" }}>{`Low stock: ${inventory.quantity} remaining.`}</Text> : null}
+          </Box>
         </Box>
         <Text style={{ marginRight: 10 }}>{(Math.round(inventory.price * 100) / 100).toFixed(2)}</Text>
       </Box>
       {
-        isPressed && (
+        isPressed && inventory.quantity !== 0 && (
           <Box
             sx={{
               height: 50,
