@@ -53,3 +53,13 @@ export const checkoutOrder = (options) => {
   const url = `${getBaseUrl()}/sales/create`;
   return requestBuilder.executeAuthenticatedPostRequest(url, options);
 };
+
+export const getIncompleteOrders = () => {
+  const url = `${getBaseUrl()}/sales/incomplete`;
+  return requestBuilder.executeAuthenticatedGetRequest(url);
+};
+
+export const onCompleteOrder = (options) => {
+  const url = `${getBaseUrl()}/sales/complete/${get(options, "salesId")}`;
+  return requestBuilder.executeAuthenticatedPatchRequest(url);
+};

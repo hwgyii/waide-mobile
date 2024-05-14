@@ -14,6 +14,7 @@ import { useDispatch } from "react-redux";
 import Authentication from "./src/pages/Authentication";
 import Inventories from "./src/components/Inventories/Inventories.jsx";
 import { getAuth, getEstablishment } from "./src/redux/reducers/auth.js";
+import Orders from "./src/components/Orders/Orders.jsx";
 
 function App() {
   const dispatch = useDispatch();
@@ -55,7 +56,8 @@ function App() {
         {/* <Authentication /> */}
         {/* <LoginCard /> */}
         {/* <SignupCard /> */}
-        <Inventories />
+        {/* <Inventories /> */}
+        <Orders />
       </GluestackUIProvider>
     </Provider>
   )
