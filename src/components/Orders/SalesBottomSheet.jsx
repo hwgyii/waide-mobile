@@ -143,7 +143,7 @@ export default function SalesBottomSheet({ selectedSales, onCheckoutOrder }) {
               onPress={onCheckoutOrder}
               isDisabled={isEmpty(selectedSales)}
             >
-              <Text>Checkout Order</Text>
+              <Text>Checkout</Text>
             </Button>
           </Box>
         </Box>
