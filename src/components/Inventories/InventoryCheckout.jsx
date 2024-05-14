@@ -46,7 +46,7 @@ export default function InventoryCheckout({ orders, selectedInventories, totalPr
           opacity: 0.5,
         }}
       >
-        <Text>Swip down to cancel checkout.</Text>
+        <Text>Swipe down to cancel checkout.</Text>
       </Box>
       {/* STORE INFO */}
       <Box
