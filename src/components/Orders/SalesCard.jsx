@@ -1,13 +1,14 @@
 import { useState } from "react";
 import { Box, Button, Pressable, } from "@gluestack-ui/themed";
 import { Text, } from "react-native";
+import dayjs from "dayjs";
 
 export default function SalesCard({ sales, index, onPressSalesCard }) {
   return (
     <Pressable onPress={(e) => {onPressSalesCard(e, sales)}}>
       <Box
         sx={{
-          height: 150,
+          height: 175,
           width: "100%",
           flexDirection: "column",
           bgColor: index % 2 === 0 ? "#FDA5A5" : "#D9D9D9",
@@ -24,7 +25,7 @@ export default function SalesCard({ sales, index, onPressSalesCard }) {
           }}
         >
           <Text style={{ marginLeft: 10 }}>Order ID: {sales._id.slice(-10)}</Text>
-          <Text style={{ marginRight: 10 }}>Preparing</Text>
+          <Text style={{ marginRight: 10 }}>{dayjs(sales.createdAt).add(8, "hours").format("MMM D, YYYY hh:mm A")}</Text>
         </Box>
         <Box
           sx={{
@@ -32,11 +33,12 @@ export default function SalesCard({ sales, index, onPressSalesCard }) {
             flexDirection: "row",
             justifyContent: "space-between",
             alignItems: "center",
-            marginBottom: 5,
+            marginBottom: 20,
             marginTop: 5,
           }}
         >
           <Text style={{ marginLeft: 10 }}>{sales.description ? sales.description : null}</Text>
+          <Text style={{ marginRight: 10 }}>Preparing</Text>
         </Box>
         <Box>
           {
