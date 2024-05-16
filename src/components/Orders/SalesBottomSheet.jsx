@@ -84,7 +84,7 @@ export default function SalesBottomSheet({ selectedSales, onCheckoutOrder }) {
             }}
           >
             {
-              !isEmpty(selectedSales) && selectedSales.items.map((item,index) => {
+              !isEmpty(selectedSales.items) && selectedSales.items.map((item,index) => {
                 return (
                   <Box key={index}
                     sx = {{
@@ -120,7 +120,7 @@ export default function SalesBottomSheet({ selectedSales, onCheckoutOrder }) {
             }}
           >
             <Text style={{ marginLeft: 10 }}>Order ID: {isEmpty(selectedSales) ? "" : selectedSales._id.slice(-10)}</Text>
-            <Text style={{ marginRight: 10 }}>Total: {(Math.round(selectedSales.totalPrice * 100) / 100).toFixed(2)}</Text>
+            <Text style={{ marginRight: 10 }}>Total: {!isEmpty(selectedSales) ? (Math.round(selectedSales.totalPrice * 100) / 100).toFixed(2) : "0.00"}</Text>
           </Box>
           <Box
             sx={{
