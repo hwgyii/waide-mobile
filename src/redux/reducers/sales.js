@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-  sales: {},
+  sales: [],
 };
 
 export const salesSlice = createSlice({
