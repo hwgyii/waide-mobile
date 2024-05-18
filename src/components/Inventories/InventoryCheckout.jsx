@@ -1,13 +1,26 @@
-import { Box, Divider, Text, VStack, Button } from "@gluestack-ui/themed";
+import { Box, Divider, Text, VStack, Button, Center, Modal, ModalBackdrop, ModalContent, ModalHeader, ModalCloseButton, ModalBody, ModalFooter, Heading, ButtonText, } from "@gluestack-ui/themed";
+import { useState, useRef } from "react";
+import { isEmpty, get } from "lodash";
 
 import * as api from "../../utilities/api";
 
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { updateInventories } from "../../redux/reducers/inventory";
+import SelectComponent from "./InventorySelect";
+
+/** 
+  NOT YET IMPLEMENTED:
+    FOR PREPARING FOR USING TABLES:
+      IF TABLES ARE ENABLED:
+        - WHEN CHECKING OUT ORDERS AND SELECTS A TABLE, CHECK IN DB IF THERE'S AN INCOMPLETE(BY CHEKING IF isCompleted IS FALSE) ORDER FOR THAT TABLE(BY CHECKING description value IF IT'S THE TABLE NAME) AND ADD THE ORDERS TO THAT INCOMPLETE ORDER.
+        - SELECT BUTTON FOR DELIVERY, TABLES, TAKEOUT ORDERS.
+**/
 
 export default function InventoryCheckout({ orders, selectedInventories, totalPrice, onClearBottomSheet }) {
   const dispatch = useDispatch();
-  const handleCheckout = async (e, isCompleted) => {
+  const { establishment } = useSelector((state) => state.auth);
+
+  const handleCheckout = async (e, isCompleted, table = null) => {
     try {
       e.preventDefault();
 
@@ -36,6 +49,85 @@ export default function InventoryCheckout({ orders, selectedInventories, totalPr
       };
     }
   };
+
+  function InventoryModal(){
+    const [showModal, setShowModal] = useState(true);
+    const ref = useRef(null);
+    return (
+      <Center
+        sx= {{
+          width: "40%",
+          marginRight: "5%",
+        }}
+      >
+        <Button
+          sx={{
+            width: "100%",
+            height: 50,
+            justifyContent: "center",
+            alignItems: "center",
+            borderRadius: 24,
+            marginTop: 7,
+          }}
+          onPress={() => setShowModal(true)} ref={ref}
+          action={"positive"}
+        >
+          <Text color="black">Prepare</Text>
+        </Button>
+        <Modal
+          isOpen={showModal}
+          onClose={() => {
+            setShowModal(false);
+          }}
+          finalFocusRef={ref}
+        >
+          <ModalBackdrop />
+          <ModalContent>
+            <ModalHeader>
+              <Heading size='lg'>Checking Out Inventory</Heading>
+            </ModalHeader>
+            <ModalBody>
+              <Box
+                sx={{
+                  flexDirection: "row",
+                  alignItems: "center",
+                  marginBottom: 10,
+                }}
+              >
+                <Text size="lg">For:</Text>
+                <SelectComponent />
+              </Box>
+            </ModalBody>
+            <ModalFooter>
+              <Button
+                variant="outline"
+                size="sm"
+                action="secondary"
+                mr="$3"
+                onPress={() => {
+                  setShowModal(false);
+                }}
+              >
+                <ButtonText>Cancel</ButtonText>
+              </Button>
+              <Button
+                size="sm"
+                action="positive"
+                borderWidth='$0'
+                // onPress={(e) => {handleCheckout(e, false)}}
+                onPress={() => {
+                  setShowModal(false);
+                }}
+              >
+                <ButtonText>Prepare</ButtonText>
+              </Button>
+            </ModalFooter>
+          </ModalContent>
+        </Modal>
+      </Center>
+    );
+  }
+
   return(
     <VStack>
       <Box
@@ -110,21 +202,27 @@ export default function InventoryCheckout({ orders, selectedInventories, totalPr
               alignItems: "center",
             }}
           >
-            <Button
-              sx={{
-                width: "40%",
-                height: 50,
-                justifyContent: "center",
-                alignItems: "center",
-                backgroundColor: "#F00B51",
-                borderRadius: 24,
-                marginTop: 7,
-                marginRight: "5%",
-              }}
-              onPress={(e) => {handleCheckout(e, false)}}
-            >
-              <Text color="black">Prepare</Text>
-            </Button>
+            { //NOT YET IMPLEMENTED MAKE !isEmpty and &&
+              isEmpty(establishment.settings) || get(establishment.settings, "tablesEnabled", false) === true 
+                ?
+                  <InventoryModal />
+                :
+                  <Button
+                    sx={{
+                      width: "40%",
+                      height: 50,
+                      justifyContent: "center",
+                      alignItems: "center",
+                      backgroundColor: "#F00B51",
+                      borderRadius: 24,
+                      marginTop: 7,
+                      marginRight: "5%",
+                    }}
+                    onPress={(e) => {handleCheckout(e, false)}}
+                  >
+                    <Text color="black">Prepare</Text>
+                  </Button>
+            }
             <Button
               sx={{
                 width: "40%",

@@ -1,0 +1,102 @@
+[
+  {
+    "establishment": {
+      "$oid": "663482bf47baa37714fb9ee0"
+    },
+    "name": "Table 1",
+    "availability": 0,
+    "currentToken": "",
+    "passcode": "",
+    "archived": false
+  },
+  {
+    "establishment": {
+      "$oid": "663482bf47baa37714fb9ee0"
+    },
+    "name": "Table 2",
+    "availability": 0,
+    "currentToken": "",
+    "passcode": "",
+    "archived": false
+  },
+  {
+    "establishment": {
+      "$oid": "663482bf47baa37714fb9ee0"
+    },
+    "name": "Table 3",
+    "availability": 0,
+    "currentToken": "",
+    "passcode": "",
+    "archived": false
+  },
+  {
+    "establishment": {
+      "$oid": "663482bf47baa37714fb9ee0"
+    },
+    "name": "Table 4",
+    "availability": 0,
+    "currentToken": "",
+    "passcode": "",
+    "archived": false
+  },
+  {
+    "establishment": {
+      "$oid": "663482bf47baa37714fb9ee0"
+    },
+    "name": "Table 5",
+    "availability": 0,
+    "currentToken": "",
+    "passcode": "",
+    "archived": false
+  },
+  {
+    "establishment": {
+      "$oid": "663482bf47baa37714fb9ee0"
+    },
+    "name": "Table 6",
+    "availability": 0,
+    "currentToken": "",
+    "passcode": "",
+    "archived": false
+  },
+  {
+    "establishment": {
+      "$oid": "663482bf47baa37714fb9ee0"
+    },
+    "name": "Table 7",
+    "availability": 0,
+    "currentToken": "",
+    "passcode": "",
+    "archived": false
+  },
+  {
+    "establishment": {
+      "$oid": "663482bf47baa37714fb9ee0"
+    },
+    "name": "Table 8",
+    "availability": 0,
+    "currentToken": "",
+    "passcode": "",
+    "archived": false
+  },
+  {
+    "establishment": {
+      "$oid": "663482bf47baa37714fb9ee0"
+    },
+    "name": "Table 9",
+    "availability": 0,
+    "currentToken": "",
+    "passcode": "",
+    "archived": false
+  },
+  {
+    "establishment": {
+      "$oid": "663482bf47baa37714fb9ee0"
+    },
+    "name": "Table 10",
+    "availability": 0,
+    "currentToken": "",
+    "passcode": "",
+    "archived": false
+  }
+]

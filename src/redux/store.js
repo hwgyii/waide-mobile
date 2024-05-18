@@ -3,6 +3,7 @@ import { configureStore } from '@reduxjs/toolkit';
 import authReducer from "./reducers/auth";
 import inventoryReducer from "./reducers/inventory";
 import salesReducer from "./reducers/sales";
+import tablesReducer from "./reducers/table";
 
 export const store = configureStore({
   reducer : {
@@ -10,5 +11,6 @@ export const store = configureStore({
     auth: authReducer,
     inventories: inventoryReducer,
     sales: salesReducer,
+    tables: tablesReducer,
   },
 });

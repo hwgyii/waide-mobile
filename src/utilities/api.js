@@ -63,3 +63,13 @@ export const onCompleteOrder = (options) => {
   const url = `${getBaseUrl()}/sales/complete/${get(options, "salesId")}`;
   return requestBuilder.executeAuthenticatedPatchRequest(url);
 };
+
+export const getEstablishmentTables =  () => {
+  const url = `${getBaseUrl()}/tables/establishment`;
+  return requestBuilder.executeAuthenticatedGetRequest(url);
+};
+
+export const updateTableAvailability = (options) => {
+  const url = `${getBaseUrl()}/tables/establishment/update-availability/${get(options, "tableId")}`;
+  return requestBuilder.executeAuthenticatedPatchRequest(url, options);
+};
