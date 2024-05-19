@@ -78,3 +78,18 @@ export const updateSettings = (options) => {
   const url = `${getBaseUrl()}/establishment/settings`;
   return requestBuilder.executeAuthenticatedPatchRequest(url, options);
 };
+
+export const updateInventory = (options) => {
+  const url = `${getBaseUrl()}/inventory/update/${get(options, "inventoryId")}`;
+  return requestBuilder.executeAuthenticatedPatchRequest(url, options);
+};
+
+export const deleteInventory = (options) => {
+  const url = `${getBaseUrl()}/inventory/delete/${get(options, "inventoryId")}`;
+  return requestBuilder.executeAuthenticatedDeleteRequest(url);
+};
+
+export const createInventory = (options) => {
+  const url = `${getBaseUrl()}/inventory/create`;
+  return requestBuilder.executeAuthenticatedPostRequest(url, options);
+};
