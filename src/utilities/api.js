@@ -73,3 +73,8 @@ export const updateTableAvailability = (options) => {
   const url = `${getBaseUrl()}/tables/establishment/update-availability/${get(options, "tableId")}`;
   return requestBuilder.executeAuthenticatedPatchRequest(url, options);
 };
+
+export const updateSettings = (options) => {
+  const url = `${getBaseUrl()}/establishment/settings`;
+  return requestBuilder.executeAuthenticatedPatchRequest(url, options);
+};

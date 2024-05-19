@@ -16,6 +16,7 @@ import Inventories from "./src/components/Inventories/Inventories.jsx";
 import { getAuth, getEstablishment } from "./src/redux/reducers/auth.js";
 import Orders from "./src/components/Orders/Orders.jsx";
 import Tables from "./src/components/Tables/Tables.jsx";
+import Settings from "./src/pages/Settings.jsx";
 
 function App() {
   const dispatch = useDispatch();
@@ -54,12 +55,13 @@ function App() {
   return (
     <Provider store={store}>
       <GluestackUIProvider config={config}>
-        <Authentication />
+        {/* <Authentication /> */}
         {/* <LoginCard /> */}
         {/* <SignupCard /> */}
         {/* <Inventories /> */}
         {/* <Orders /> */}
         {/* <Tables /> */}
+        <Settings />
       </GluestackUIProvider>
     </Provider>
   )

@@ -15,9 +15,12 @@ export const authSlice = createSlice({
     getEstablishment: (state, action) => {
       state.establishment = action.payload
     },
+    updateEstablishment: (state, action) => {
+      state.establishment = action.payload
+    },
   }
 });
 
-export const { getAuth, getEstablishment } = authSlice.actions;
+export const { getAuth, getEstablishment, updateEstablishment } = authSlice.actions;
 
 export default authSlice.reducer;
