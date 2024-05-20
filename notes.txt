@@ -1,0 +1,4 @@
+NOT YET IMPLEMENTED
+in useEffect(() => {
+
+}, []); of every component, query every state needed para di na mahirap ayusin.
