@@ -66,7 +66,7 @@ export default function ReceiptsModal({ receipt, index }) {
                 }}
               >
                 <Text>Receipt ID: {receipt._id.slice(10)}</Text>
-                <Text>Description: {receipt.description}</Text>
+                {receipt.description ? <Text>Description: {receipt.description}</Text> : null}
                 <Text>{dayjs(receipt.createdAt).add(8, "hours").format("MMM DD, YYYY hh:mm A")}</Text>
                 <Divider bgColor="black" marginTop={10}/>
                 {
