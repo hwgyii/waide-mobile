@@ -93,3 +93,8 @@ export const createInventory = (options) => {
   const url = `${getBaseUrl()}/inventory/create`;
   return requestBuilder.executeAuthenticatedPostRequest(url, options);
 };
+
+export const getAllEstablishmentOrders = (options) => {
+  const url = `${getBaseUrl()}/sales/establishment`;
+  return requestBuilder.executeAuthenticatedGetRequest(url);
+};

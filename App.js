@@ -18,6 +18,7 @@ import Orders from "./src/components/Orders/Orders.jsx";
 import Tables from "./src/components/Tables/Tables.jsx";
 import Settings from "./src/pages/Settings.jsx";
 import InventoriesCRUD from "./src/components/CRUD/Inventories/InventoriesCRUD.jsx";
+import Receipts from "./src/components/CRUD/Receipts/Receipts.jsx";
 
 function App() {
   const dispatch = useDispatch();
@@ -63,7 +64,8 @@ function App() {
         {/* <Orders /> */}
         {/* <Tables /> */}
         {/* <Settings /> */}
-        <InventoriesCRUD />
+        {/* <InventoriesCRUD /> */}
+        <Receipts />
       </GluestackUIProvider>
     </Provider>
   )

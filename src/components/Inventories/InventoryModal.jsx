@@ -32,9 +32,7 @@ export default function InventoryModal(){
         <ModalContent>
           <ModalHeader>
             <Heading size='lg'>Engage with Modals</Heading>
-            <ModalCloseButton>
-              <Text>Close </Text>
-            </ModalCloseButton>
+            <ModalCloseButton><Text underline={true} color="red">Close</Text></ModalCloseButton>
           </ModalHeader>
           <ModalBody>
             <Text >
