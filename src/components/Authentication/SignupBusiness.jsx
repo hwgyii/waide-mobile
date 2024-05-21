@@ -53,7 +53,7 @@ export default function SignupBusiness({ setSignupToRender, setAuthenticationToR
         setAuthenticationToRender("authentication");
       }
     } catch (error) {
-      console.log(error);
+      console.error(error);
       if (error.response) {
         return alert(error.response.data.message);
       }

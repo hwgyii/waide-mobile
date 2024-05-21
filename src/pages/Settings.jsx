@@ -14,10 +14,6 @@ export default function Settings() {
   const [isButtonDisabled, setIsButtonDisabled] = useState(true);
 
   useEffect(() => {
-    console.log(establishment);
-  }, []);
-
-  useEffect(() => {
     let shoudDisable = true;
     Object.keys(settings).forEach((key) => {
       if (settings[key] !== get(establishment, `settings.${key}`)) shoudDisable = false;

@@ -27,13 +27,12 @@ export default function Orders() {
         setIsLoaded(true);
       }
     } catch (error) {
-      console.log(JSON.stringify(error, null, 2));
+      console.error(error);
     }
   };
 
   useEffect(() => {
-    if (isEmpty(sales)) fetchOrders();
-    else setIsLoaded(true);
+    fetchOrders();
   }, []);
 
   function SalesHeader() {
@@ -71,7 +70,7 @@ export default function Orders() {
 
       }
     } catch (error) {
-      console.log(JSON.stringify(error, null, 2));
+      console.error(error);
     }
   };
 

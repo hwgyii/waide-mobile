@@ -41,8 +41,6 @@ export default function SignupCustomer({ setSignupToRender, setAuthenticationToR
       
       const response = await api.signUp({ body });
 
-      console.log(JSON.stringify(response, null, 2));
-      console.log(response);
       if (response.status === 200) {
         alert("Signup successful");
         setAuthenticationToRender("authentication");

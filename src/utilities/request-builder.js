@@ -19,7 +19,7 @@ const buildAuthenticatedHeaders = async () => {
     
     return { "Authorization": `Bearer ${currentSession}` };
   } catch (error) {
-    console.log(error);
+    console.error(error);
   }
 }
 

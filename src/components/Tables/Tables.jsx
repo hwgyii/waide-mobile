@@ -26,13 +26,12 @@ export default function Tables() {
         setIsLoaded(true);
       }
     } catch (error) {
-      console.log(JSON.stringify(error, null, 2));
+      console.error(error);
     }
   };
 
   useEffect(() => {
-    if (isEmpty(tables)) fetchTables();
-    else setIsLoaded(true);
+    fetchTables();
   }, []);
 
   function TablesHeader() {

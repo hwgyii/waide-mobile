@@ -50,7 +50,7 @@ export default function SalesBottomSheet({ selectedTable, onCheckoutOrder, setSe
           return table._id === response.data.table._id ? response.data.table : table;
         })));
         setSelectedTable(response.data.table);
-        console.log(JSON.stringify(response.data.table, null, 2));
+        
         alert(`${selectedTable.name} is now ${availability === 0 ? "available" : availability === 1 ? "occupied" : "reserved"}.`);
         setIndex(0);
         if (response.data.table.availability === 1) {

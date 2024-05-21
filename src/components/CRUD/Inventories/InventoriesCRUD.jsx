@@ -18,15 +18,13 @@ export default function InventoriesCRUD({}) {
 
   const fetchInventories = async () => {
     try {
-      if (isEmpty(establishment)) return console.log("Establishment not found.");
-
-      const response = await api.getInventories({ establishmentId: establishment._id });
+      const response = await api.getInventories();
       if (response.status === 200) {
         dispatch(getInventories(response.data.inventories));
         setIsLoaded(true);
       }
     } catch (error) {
-      console.log(error);
+      console.error(error);
     }
   };
   

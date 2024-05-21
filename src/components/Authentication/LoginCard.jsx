@@ -31,8 +31,6 @@ export default function LoginCard({ setAuthenticationToRender }) {
         await AsyncStorage.setItem("sessionToken", response.data.sessionToken);
         await AsyncStorage.setItem("user", JSON.stringify(response.data.user));
 
-        console.log(JSON.stringify(response.data, null, 2));
-
         dispatch(getAuth(response.data.user));
 
         if (response.data.user.role === 1 && response.data.establishment) dispatch(getEstablishment(response.data.establishment));
