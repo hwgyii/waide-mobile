@@ -98,3 +98,18 @@ export const getAllEstablishmentOrders = (options) => {
   const url = `${getBaseUrl()}/sales/establishment`;
   return requestBuilder.executeAuthenticatedGetRequest(url);
 };
+
+export const deleteTable = (options) => {
+  const url = `${getBaseUrl()}/tables/${get(options, "tableId")}`;
+  return requestBuilder.executeAuthenticatedDeleteRequest(url);
+};
+
+export const updateTable = (options) => {
+  const url = `${getBaseUrl()}/tables/${get(options, "tableId")}`;
+  return requestBuilder.executeAuthenticatedPatchRequest(url, options);
+};
+
+export const createTable = (options) => {
+  const url = `${getBaseUrl()}/tables/create`;
+  return requestBuilder.executeAuthenticatedPostRequest(url, options);
+};
