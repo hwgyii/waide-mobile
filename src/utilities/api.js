@@ -143,3 +143,8 @@ export const getCustomerDeliveries = () => {
   const url = `${getBaseUrl()}/sales/deliveries`;
   return requestBuilder.executeAuthenticatedGetRequest(url);
 };
+
+export const accessOrdering = (options) => {
+  const url = `${getBaseUrl()}/tables/access`;
+  return requestBuilder.executeAuthenticatedPostRequest(url, options);
+};

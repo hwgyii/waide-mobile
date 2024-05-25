@@ -3,14 +3,14 @@
 import { Fontisto } from "@expo/vector-icons";
 import { Box, Button, ButtonText, Divider, Fab, FabIcon, Heading, Modal, ModalBackdrop, ModalBody, ModalCloseButton, ModalContent, ModalFooter, ModalHeader, Pressable, SafeAreaView, ScrollView, Text, Textarea, TextareaInput, View } from "@gluestack-ui/themed";
 import dayjs from "dayjs";
-import { get, isEmpty } from "lodash";
+import { get, isEmpty, set } from "lodash";
 import { useEffect, useRef, useState } from "react";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
 import { useSelector } from "react-redux";
 
 import * as api from "../../../utilities/api";
 
-export default function OrderModal({ establishment, orders, selectedInventories, totalPrice, onClearOrders, setInventories }) {
+export default function OrderingModal({ table, establishment, orders, selectedInventories, totalPrice, onClearOrders, setInventories, setTable }) {
   const { auth } = useSelector((state) => state.auth);
   const ref = useRef(null);
   const [showModal, setShowModal] = useState(false);
@@ -19,20 +19,22 @@ export default function OrderModal({ establishment, orders, selectedInventories,
   const handleCheckout = async (e) => {
     try {
       e.preventDefault();
-
-      const response = await api.createDelivery({ body: {
+      const response = await api.checkoutOrder({ body: {
         establishmentId: establishment._id,
         orders,
         selectedInventories,
         totalPrice,
         isCompleted: false,
-        description: `For Delivery ${auth.fullName}: ${address}`,
-        address,
+        description: `${table.name}`,
+        table: table._id,
       }});
 
       if (response.status === 200) {
         alert(response.data.message);
         setInventories(response.data.inventories);
+        setTable(response.data.table);
+        setShowModal(false);
+        onClearOrders();
       }
     } catch (error) {
       if (error.response && error.response.data.message) {
@@ -82,7 +84,7 @@ export default function OrderModal({ establishment, orders, selectedInventories,
                     alignItems: "center",
                   }}
                 >
-                  <Text>For Delivery</Text>
+                  <Text>{table.name}</Text>
                   <Text>{dayjs().add(8, "hours").format("hh:mm A")}</Text>
                 </Box>
               </Box>
@@ -128,19 +130,6 @@ export default function OrderModal({ establishment, orders, selectedInventories,
                 <Text style={{ marginLeft: 15 }}>Total</Text>
                 <Text style={{ marginRight: 15, fontWeight: "bold" }}>{totalPrice.toFixed(2)}</Text>
               </Box>
-              <Box
-                sx={{
-                  width: "100%",
-                  flexDirection: "row",
-                  justifyContent: "space-between",
-                  alignItems: "center",
-                  marginTop: 10,
-                }}
-              >
-                <Textarea>
-                  <TextareaInput placeholder="Delivery Address" value={address} onChangeText={(value) => {setAddress(value)}} autoFocus={true} />
-                </Textarea>
-              </Box>
             </ModalBody>
             <ModalFooter>
               <Box
@@ -153,7 +142,7 @@ export default function OrderModal({ establishment, orders, selectedInventories,
                 <Button onPress={() => {onClearOrders(); setAddress(""); setShowModal(false);}} action="negative" marginRight={25}>
                   <ButtonText>Clear</ButtonText>
                 </Button>
-                <Button onPress={handleCheckout} action="primary" disabled={Object.keys(orders).length === 0 && isEmpty(address)}>
+                <Button onPress={(e) => handleCheckout(e)} action="primary" disabled={Object.keys(orders).length === 0 && isEmpty(address)}>
                   <ButtonText>Order</ButtonText>
                 </Button>
               </Box>

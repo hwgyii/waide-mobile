@@ -23,6 +23,7 @@ import TablesCRUD from "./src/components/CRUD/Tables/TablesCRUD.jsx";
 import Establishments from "./src/components/Customer/Establishments/Establishments.jsx";
 import AppNavigation from "./src/navigation/AppNavigation.jsx";
 import CustomerReceipts from "./src/components/Customer/Receipts/CustomerReceipts.jsx";
+import Ordering from "./src/components/Customer/Ordering/Ordering.jsx";
 
 function App() {
   const dispatch = useDispatch();
@@ -74,7 +75,8 @@ function App() {
         {/* <TablesCRUD /> */}
         {/* <Establishments /> */}
         {/* <CustomerReceipts /> */}
-        <AppNavigation />
+        <Ordering />
+        {/* <AppNavigation /> */}
       </GluestackUIProvider>
     </Provider>
   )

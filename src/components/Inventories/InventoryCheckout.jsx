@@ -27,6 +27,7 @@ export default function InventoryCheckout({ orders, selectedInventories, totalPr
     try {
       e.preventDefault();
       const response = await api.checkoutOrder({ body: {
+        establishmentId: establishment._id,
         orders,
         selectedInventories,
         totalPrice,
