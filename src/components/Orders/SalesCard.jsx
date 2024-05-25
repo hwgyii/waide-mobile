@@ -37,7 +37,13 @@ export default function SalesCard({ sales, index, onPressSalesCard }) {
             marginTop: 5,
           }}
         >
-          <Text style={{ marginLeft: 10 }}>{sales.description ? sales.description : null}</Text>
+          <Box
+            sx={{
+              width: "50%",
+            }}
+          >
+            <Text style={{ marginLeft: 10 }}>{sales.description ? sales.description : null}</Text>
+          </Box>
           <Text style={{ marginRight: 10 }}>Preparing</Text>
         </Box>
         <Box>

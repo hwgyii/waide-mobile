@@ -157,10 +157,10 @@ export default function TablesCRUDModal({ table, index, shouldEdit, setIndexToEd
                     }}
                   >
                     <Pressable onPress={() => handleConfirmEdit()} disabled={!isEditModeButtonEnabled}>
-                      <Icon name="edit" as={CheckIcon} size="xl" marginRight={30} color={!isEditModeButtonEnabled ? "black" : "blue"} />
+                      <Icon name="edit" as={CheckIcon} fontSize={24} marginRight={30} color={!isEditModeButtonEnabled ? "black" : "blue"} />
                     </Pressable>
                     <Pressable onPress={() => {setIsEditMode(false); setIndexToEdit(-1);}}>
-                      <Icon name="edit" as={CloseIcon} size="xl" marginRight={20} color={"red"} />
+                      <Icon name="edit" as={CloseIcon} fontSize={24} marginRight={20} color={"red"} />
                     </Pressable>
                   </Box>
                 :
@@ -173,10 +173,10 @@ export default function TablesCRUDModal({ table, index, shouldEdit, setIndexToEd
                     }}
                   >
                     <Pressable onPress={() => {setIsEditMode(true); setIndexToEdit(index);}}>
-                      <Icon name="edit" as={EditIcon} size="xl" marginRight={30} color={"blue"} />
+                      <Icon name="edit" as={EditIcon} fontSize={24} marginRight={30} color={"blue"} />
                     </Pressable>
                     <Pressable onPress={() => handleConfirmDelete()}>
-                      <Icon name="edit" as={TrashIcon} size="xl" marginRight={20} color={"red"} />
+                      <Icon name="edit" as={TrashIcon} fontSize={24} marginRight={20} color={"red"} />
                     </Pressable>
                   </Box>
             }

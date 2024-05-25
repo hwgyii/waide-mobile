@@ -32,9 +32,9 @@ export default function InventoryCheckout({ orders, selectedInventories, totalPr
       }});
 
       if (response.status === 200) {
-        onClearBottomSheet();
         dispatch(updateInventories(response.data.inventories));        
         alert(response.data.message);
+        onClearBottomSheet();
         // NOT YET IMPLEMENTED
         // ADD SETTING BOTTOM SHEET INDEX TO 0 [DONE onClearBottomSheet]
         // ADD CLEARING ORDERS [DONE onClearBottomSheet -> onClearOrders]
@@ -51,7 +51,7 @@ export default function InventoryCheckout({ orders, selectedInventories, totalPr
   };
 
   function InventoryModal(){
-    const [showModal, setShowModal] = useState(true);
+    const [showModal, setShowModal] = useState(false);
     const ref = useRef(null);
     return (
       <Center

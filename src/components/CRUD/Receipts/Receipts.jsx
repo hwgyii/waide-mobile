@@ -121,7 +121,7 @@ export default function Receipts() {
               - CHANGE BETTER BACKGROUND COLOR
           */}
           <Text style={{ fontSize: 16, fontWeight: "bold", marginLeft: 15 }}>No. of Receipts: {receipts.length}</Text>
-          <Text style={{ fontSize: 16, fontWeight: "bold", marginRight: 15 }}>Total Sales: {receipts.reduce((acc, curr) => acc + curr.totalPrice, 0)}</Text>
+          <Text style={{ fontSize: 16, fontWeight: "bold", marginRight: 15 }}>Total Sales: {receipts.reduce((acc, curr) => acc + curr.totalPrice, 0).toFixed(2)}</Text>
         </Box>
       </SafeAreaView>
     </GestureHandlerRootView>

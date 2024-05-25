@@ -42,7 +42,7 @@ export default function ReceiptsModal({ receipt, index }) {
                 }}
               >
                 <Text style={{ marginLeft: 15 }}>{receipt._id.slice(-10)}</Text>
-                <Text style={{ marginRight: 15 }}>{receipt.totalPrice}</Text>
+                <Text style={{ marginRight: 15 }}>{receipt.totalPrice.toFixed(2)}</Text>
               </Box>
             </Box>
           </Box>
@@ -80,8 +80,12 @@ export default function ReceiptsModal({ receipt, index }) {
                         marginTop: index === 0 ? 10 : 0,
                       }}
                     >
-                      <Text style={{ marginLeft: 10 }}>{item.quantity} - {item.item.name}</Text>
-                      <Text style={{ marginLeft: 10 }}>{item.subtotal}</Text>
+                      <Box
+                        width={"50%"}
+                      >
+                        <Text style={{ marginLeft: 10 }}>{item.quantity} - {item.item.name}</Text>
+                      </Box>
+                      <Text style={{ marginLeft: 10 }}>{item.subtotal.toFixed(2)}</Text>
                     </Box>
                   ))
                 }
@@ -94,7 +98,7 @@ export default function ReceiptsModal({ receipt, index }) {
                   }}
                 >
                   <Text style={{ marginLeft: 10, fontSize: 24, fontWeight: "bold" }}>Total:</Text>
-                  <Text style={{ fontSize: 24, fontWeight: "bold" }}>{receipt.totalPrice}</Text>
+                  <Text style={{ fontSize: 24, fontWeight: "bold" }}>{receipt.totalPrice.toFixed(2)}</Text>
                 </Box>
               </ScrollView>
             </ModalBody>
