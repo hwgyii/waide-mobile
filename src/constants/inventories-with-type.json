@@ -1,0 +1,232 @@
+[
+  {
+    "_id": {
+      "$oid": "663627210435785f364d15e1"
+    },
+    "name": "Product 1",
+    "description": "This is the description for Product 1",
+    "quantity": 10,
+    "price": 20.99,
+    "archived": true,
+    "establishment": {
+      "$oid": "663482bf47baa37714fb9ee0"
+    },
+    "updatedAt": {
+      "$date": "2024-05-19T20:11:33.487Z"
+    },
+    "type": 0
+  },
+  {
+    "_id": {
+      "$oid": "663627210435785f364d15e4"
+    },
+    "name": "Product 4",
+    "description": "This is the description for Product 4 edited.",
+    "quantity": 3,
+    "price": 8.99,
+    "archived": true,
+    "establishment": {
+      "$oid": "663482bf47baa37714fb9ee0"
+    },
+    "updatedAt": {
+      "$date": "2024-05-19T20:14:40.669Z"
+    },
+    "type": 0
+  },
+  {
+    "_id": {
+      "$oid": "663627210435785f364d15e7"
+    },
+    "name": "Product 7",
+    "description": "This is the description for Product 7",
+    "quantity": 10,
+    "price": 10,
+    "archived": true,
+    "establishment": {
+      "$oid": "663482bf47baa37714fb9ee0"
+    },
+    "updatedAt": {
+      "$date": "2024-05-19T20:13:31.168Z"
+    },
+    "type": 0
+  },
+  {
+    "_id": {
+      "$oid": "663627210435785f364d15e2"
+    },
+    "name": "Product 2",
+    "description": "This is the description for Product 2",
+    "quantity": 12,
+    "price": 12.5,
+    "archived": true,
+    "establishment": {
+      "$oid": "663482bf47baa37714fb9ee0"
+    },
+    "updatedAt": {
+      "$date": "2024-05-19T20:14:47.757Z"
+    },
+    "type": 0
+  },
+  {
+    "_id": {
+      "$oid": "663627210435785f364d15e3"
+    },
+    "name": "Product 3",
+    "description": "This is the description for Product 3",
+    "quantity": 12,
+    "price": 30.75,
+    "archived": false,
+    "establishment": {
+      "$oid": "663482bf47baa37714fb9ee0"
+    },
+    "updatedAt": {
+      "$date": "2024-05-06T07:38:11.085Z"
+    },
+    "type": 0
+  },
+  {
+    "_id": {
+      "$oid": "663627210435785f364d15e5"
+    },
+    "name": "Product 5",
+    "description": "This is the description for Product 5",
+    "quantity": 11,
+    "price": 50,
+    "archived": false,
+    "establishment": {
+      "$oid": "663482bf47baa37714fb9ee0"
+    },
+    "updatedAt": {
+      "$date": "2024-05-22T07:20:42.904Z"
+    },
+    "type": 0
+  },
+  {
+    "_id": {
+      "$oid": "663627210435785f364d15e6"
+    },
+    "name": "Product 6",
+    "description": "This is the description for Product 6",
+    "quantity": 11,
+    "price": 18.25,
+    "archived": false,
+    "establishment": {
+      "$oid": "663482bf47baa37714fb9ee0"
+    },
+    "updatedAt": {
+      "$date": "2024-05-06T08:13:30.805Z"
+    },
+    "type": 0
+  },
+  {
+    "_id": {
+      "$oid": "663627210435785f364d15e8"
+    },
+    "name": "Product 8",
+    "description": "This is the description for Product 8",
+    "quantity": 14,
+    "price": 15.5,
+    "archived": false,
+    "establishment": {
+      "$oid": "663482bf47baa37714fb9ee0"
+    },
+    "updatedAt": {
+      "$date": "2024-05-16T10:45:21.296Z"
+    },
+    "type": 0
+  },
+  {
+    "_id": {
+      "$oid": "663627210435785f364d15e9"
+    },
+    "name": "Product 9",
+    "description": "This is the description for Product 9",
+    "quantity": 6,
+    "price": 22.75,
+    "archived": false,
+    "establishment": {
+      "$oid": "663482bf47baa37714fb9ee0"
+    },
+    "updatedAt": {
+      "$date": "2024-05-22T05:52:08.734Z"
+    },
+    "type": 0
+  },
+  {
+    "_id": {
+      "$oid": "663627210435785f364d15ea"
+    },
+    "name": "Product 10",
+    "description": "This is the description for Product 10",
+    "quantity": 0,
+    "price": 40,
+    "archived": false,
+    "establishment": {
+      "$oid": "663482bf47baa37714fb9ee0"
+    },
+    "updatedAt": {
+      "$date": "2024-05-13T20:53:30.513Z"
+    },
+    "type": 0
+  },
+  {
+    "_id": {
+      "$oid": "664a5fb30dfdf3ec1cfdd6ff"
+    },
+    "establishment": {
+      "$oid": "663482bf47baa37714fb9ee0"
+    },
+    "name": "Product 11",
+    "description": "This is the description for Product 11",
+    "quantity": 107,
+    "price": 11,
+    "archived": false,
+    "createdAt": {
+      "$date": "2024-05-19T20:23:15.435Z"
+    },
+    "updatedAt": {
+      "$date": "2024-05-22T05:53:09.551Z"
+    },
+    "type": 0
+  },
+  {
+    "_id": {
+      "$oid": "664a5fd00dfdf3ec1cfdd703"
+    },
+    "establishment": {
+      "$oid": "663482bf47baa37714fb9ee0"
+    },
+    "name": "Product 12",
+    "description": "This is the description for Product 12",
+    "quantity": 122,
+    "price": 12,
+    "archived": false,
+    "createdAt": {
+      "$date": "2024-05-19T20:23:44.632Z"
+    },
+    "updatedAt": {
+      "$date": "2024-05-19T20:23:44.632Z"
+    },
+    "type": 0
+  },
+  {
+    "_id": {
+      "$oid": "664a5fea0dfdf3ec1cfdd707"
+    },
+    "establishment": {
+      "$oid": "663482bf47baa37714fb9ee0"
+    },
+    "name": "Product 13",
+    "description": "This is the description for Product 13",
+    "quantity": 133,
+    "price": 13,
+    "archived": false,
+    "createdAt": {
+      "$date": "2024-05-19T20:24:10.013Z"
+    },
+    "updatedAt": {
+      "$date": "2024-05-19T20:24:10.013Z"
+    },
+    "type": 0
+  }
+]

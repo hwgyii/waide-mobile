@@ -20,6 +20,9 @@ import Settings from "./src/pages/Settings.jsx";
 import InventoriesCRUD from "./src/components/CRUD/Inventories/InventoriesCRUD.jsx";
 import Receipts from "./src/components/CRUD/Receipts/Receipts.jsx";
 import TablesCRUD from "./src/components/CRUD/Tables/TablesCRUD.jsx";
+import Establishments from "./src/components/Customer/Establishments/Establishments.jsx";
+import AppNavigation from "./src/navigation/AppNavigation.jsx";
+import CustomerReceipts from "./src/components/Customer/Receipts/CustomerReceipts.jsx";
 
 function App() {
   const dispatch = useDispatch();
@@ -44,6 +47,7 @@ function App() {
         await AsyncStorage.clear();
         //  NAVIGATE TO LOGIN PAGE
       } else {
+        console.error(error);
         // Handle other types of errors (e.g., network error)
         // You might want to display a generic error message or retry the request
         // Example: alert("An error occurred. Please try again later.");
@@ -67,7 +71,10 @@ function App() {
         {/* <Settings /> */}
         {/* <InventoriesCRUD /> */}
         {/* <Receipts />  */}
-        <TablesCRUD />
+        {/* <TablesCRUD /> */}
+        {/* <Establishments /> */}
+        {/* <CustomerReceipts /> */}
+        <AppNavigation />
       </GluestackUIProvider>
     </Provider>
   )

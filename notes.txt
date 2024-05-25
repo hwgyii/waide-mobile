@@ -4,3 +4,6 @@ in useEffect(() => {
 }, []); of every component, query every state needed para di na mahirap ayusin.
 
 in every CRUD component, ayusin and gawing unified.
+
+Send Notification when a customer requested for delivery.
+Send Push Notification when a customer added a review.

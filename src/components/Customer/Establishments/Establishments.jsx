@@ -4,6 +4,7 @@ import { GestureHandlerRootView } from "react-native-gesture-handler";
 
 import * as api from "../../../utilities/api";
 import { Pressable } from "react-native";
+import EstablishmentPage from "./EstablishmentPage";
 
 export default function Establishments() {
   const [establishments, setEstablishments] = useState([]);
@@ -26,10 +27,35 @@ export default function Establishments() {
     fetchEstablishments();
   }, []);
 
-  return (
-    <GestureHandlerRootView>
-      <SafeAreaView>
+  
+  const [component, setComponent] = useState("Establishments");
+  const [establishmentId, setEstablishmentId] = useState("");
 
+  const renderComponent = () => {
+    switch (component) {
+      case "Establishments":
+        return <EstablishmentsPage />;
+      case "EstablishmentPage":
+        return <EstablishmentPage establishmentId={establishmentId} setComponent={setComponent} />;
+      default:
+        return <EstablishmentsPage />;
+    }    
+  };
+
+  function EstablishmentsPage() {
+    return (
+      <>
+        <Box
+          sx={{
+            height: 75,
+            width: "100%",
+            justifyContent: "center",
+            alignItems: "center",
+            marginBottom: 10,
+          }}
+        >
+          <Text fontSize={32} fontWeight={"bold"}>Establishments</Text>
+        </Box>
         <ScrollView>
           {
             isLoaded
@@ -38,13 +64,14 @@ export default function Establishments() {
                   ?
                     establishments.map((establishment, index) => {
                       return (
-                        <Pressable onPress={() => console.log(`${establishment.name} selected.`)} key={index}>
+                        <Pressable onPress={() => {setEstablishmentId(establishment._id); setComponent("EstablishmentPage")}} key={index}>
                             <Box
                               sx={{
                                 height: 75,
                                 width: "100%",
                                 justifyContent: "center",
                                 bgColor: index % 2 === 0 ? "#FDA5A5" : "#D9D9D9",
+                                marginBottom: 10,
                               }}
                             >
                               <Text marginLeft={10} fontSize={20} fontWeight={"bold"}>{establishment.name}</Text>
@@ -72,6 +99,14 @@ export default function Establishments() {
               </Box>
           }
         </ScrollView>
+      </>
+    );
+  };
+
+  return (
+    <GestureHandlerRootView>
+      <SafeAreaView>
+        {renderComponent()}
       </SafeAreaView>
     </GestureHandlerRootView>
   )

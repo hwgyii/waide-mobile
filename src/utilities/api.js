@@ -4,7 +4,7 @@ import { get } from "lodash";
 export const getBaseUrl = () => {
   const NODE_ENV = get(process.env, "EXPO_NODE_ENV", "development");
   if (NODE_ENV === "development") {
-    return "http://192.168.100.151:3000";
+    return "http://192.168.1.8:3000";
   } else if (NODE_ENV === "staging") {
     const stagingUrl = get(process.env, "EXPO_STAGING_API_URL");
 
@@ -39,8 +39,8 @@ export const getUser = () => {
   return requestBuilder.executeAuthenticatedGetRequest(url);
 };
 
-export const getInventories = (options) => {
-  const url = `${getBaseUrl()}/inventory/${get(options, "establishmentId")}`;
+export const getInventories = () => {
+  const url = `${getBaseUrl()}/inventory/me`;
   return requestBuilder.executeAuthenticatedGetRequest(url);
 };
 
@@ -112,4 +112,34 @@ export const updateTable = (options) => {
 export const createTable = (options) => {
   const url = `${getBaseUrl()}/tables/create`;
   return requestBuilder.executeAuthenticatedPostRequest(url, options);
+};
+
+export const getEstablishments = () => {
+  const url = `${getBaseUrl()}/establishments`;
+  return requestBuilder.executeAuthenticatedGetRequest(url);
+};
+
+export const getEstablishment = (options) => {
+  const url = `${getBaseUrl()}/establishment/${get(options, "establishmentId")}`;
+  return requestBuilder.executeAuthenticatedGetRequest(url);
+};
+
+export const getSalesToday = () => {
+  const url = `${getBaseUrl()}/salesToday`;
+  return requestBuilder.executeAuthenticatedGetRequest(url);
+};
+
+export const createDelivery = (options) => {
+  const url = `${getBaseUrl()}/sales/delivery/create`;
+  return requestBuilder.executeAuthenticatedPostRequest(url, options);
+};
+
+export const addReview = (options) => {
+  const url = `${getBaseUrl()}/establishment/review/create`;
+  return requestBuilder.executeAuthenticatedPostRequest(url, options);
+};
+
+export const getCustomerDeliveries = () => {
+  const url = `${getBaseUrl()}/sales/deliveries`;
+  return requestBuilder.executeAuthenticatedGetRequest(url);
 };
