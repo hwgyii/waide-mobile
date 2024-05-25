@@ -34,6 +34,23 @@ export default function TablesCard({ table, index, onPressTablesCard }) {
           <Text style={{ marginLeft: 10 }}>{table.name}</Text>
           <Text style={{ marginRight: 10 }}>{AVAILABILITY[table.availability]}</Text>
         </Box>
+        {
+          table.availability === 1 && (
+            <Box
+              sx={{
+                width: "100%",
+                flexDirection: "row",
+                justifyContent: "space-between",
+                alignItems: "center",
+                marginBottom: 5,
+                marginTop: 5,
+              }}
+            >
+              <Text style={{ marginLeft: 10 }}>Access Code: {table.currentToken}</Text>
+              <Text style={{ marginRight: 10 }}>Passcode: {table.passcode}</Text>
+            </Box>
+          )
+        }
       </Box>
     </Pressable>
   );

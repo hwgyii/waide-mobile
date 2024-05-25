@@ -55,7 +55,7 @@ export default function InventoryCard({ inventory, establishment, order, onSetOr
   };
 
   return (
-    <Pressable onPress={onPressInventoryCard}>
+    <Pressable onPress={onPressInventoryCard} disabled={!get(establishment.settings, "deliveryEnabled", false)}>
       <Box
         sx={{
           height: 115,

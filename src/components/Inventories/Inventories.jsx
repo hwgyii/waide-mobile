@@ -9,6 +9,7 @@ import InventoryCard from "./InventoryCard";
 import * as api from "../../utilities/api";
 import { isEmpty, } from "lodash";
 import { useSelector, useDispatch } from "react-redux";
+import { getTables } from "../../redux/reducers/table";
 
 export default function Inventories() {
   const [isLoaded, setIsLoaded] = useState(false);
@@ -36,8 +37,24 @@ export default function Inventories() {
     }
   };
 
+  const fetchTables = async () => {
+    try {
+      const response = await api.getEstablishmentTables();
+      if(response.status === 200) {
+        dispatch(getTables(response.data.tables));
+      }
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  useEffect(() => {
+    fetchTables();
+  }, []);
+
   useEffect(() => {
     fetchInventories();
+    fetchTables();
   }, []);
 
   useEffect(() => {

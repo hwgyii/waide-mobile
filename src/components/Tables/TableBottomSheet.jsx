@@ -10,7 +10,7 @@ import * as api from "../../utilities/api";
 import { useDispatch, useSelector } from "react-redux";
 import { updateTables } from "../../redux/reducers/table";
 
-export default function SalesBottomSheet({ selectedTable, onCheckoutOrder, setSelectedTable }) {
+export default function SalesBottomSheet({ selectedTable, setSelectedTable }) {
   const { tables } = useSelector((state) => state.tables);
   const dispatch = useDispatch();
 
@@ -67,7 +67,6 @@ export default function SalesBottomSheet({ selectedTable, onCheckoutOrder, setSe
 
   const onCheckoutTable = async (event) => {
     changeTableAvailability(event, 0);
-    onCheckoutOrder(event); 
     setIndex(0);
   };
 

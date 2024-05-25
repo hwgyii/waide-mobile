@@ -58,19 +58,6 @@ export default function Tables() {
     });
   };
 
-  const onCheckoutOrder = async (event) => {
-    try {
-      event.preventDefault();
-      const response = await api.onCompleteOrder({ salesId: selectedTable._id });
-      if (response.status === 200) {
-        dispatch(updateTables(sales.filter((sale) => sale._id !== selectedTable._id)));
-        setSelectedTable({});
-      }
-    } catch (error) {
-      console.log(JSON.stringify(error, null, 2));
-    }
-  };
-
   return (
       <GestureHandlerRootView>
         <SafeAreaView
@@ -112,7 +99,7 @@ export default function Tables() {
                 </Box>
             }
           </ScrollView>
-          <TableBottomSheet selectedTable={selectedTable} onCheckoutOrder={onCheckoutOrder} setSelectedTable={setSelectedTable} />
+          <TableBottomSheet selectedTable={selectedTable} setSelectedTable={setSelectedTable} />
         </SafeAreaView>
       </GestureHandlerRootView>
   );

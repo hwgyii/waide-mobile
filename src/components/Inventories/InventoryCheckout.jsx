@@ -1,4 +1,4 @@
-import { Box, Divider, Text, VStack, Button, Center, Modal, ModalBackdrop, ModalContent, ModalHeader, ModalCloseButton, ModalBody, ModalFooter, Heading, ButtonText, } from "@gluestack-ui/themed";
+import { Box, Divider, Text, VStack, Button, Center, Modal, ModalBackdrop, ModalContent, ModalHeader, ModalCloseButton, ModalBody, ModalFooter, Heading, ButtonText, Select, SelectTrigger, SelectInput, SelectIcon, Icon, ChevronDownIcon, SelectPortal, SelectContent, SelectDragIndicatorWrapper, SelectDragIndicator, SelectItem, SelectBackdrop, ScrollView, } from "@gluestack-ui/themed";
 import { useState, useRef } from "react";
 import { isEmpty, get } from "lodash";
 
@@ -6,7 +6,8 @@ import * as api from "../../utilities/api";
 
 import { useDispatch, useSelector } from "react-redux";
 import { updateInventories } from "../../redux/reducers/inventory";
-import SelectComponent from "./InventorySelect";
+import { updateTables } from "../../redux/reducers/table";
+import { updateSales } from "../../redux/reducers/sales";
 
 /** 
   NOT YET IMPLEMENTED:
@@ -19,21 +20,33 @@ import SelectComponent from "./InventorySelect";
 export default function InventoryCheckout({ orders, selectedInventories, totalPrice, onClearBottomSheet }) {
   const dispatch = useDispatch();
   const { establishment } = useSelector((state) => state.auth);
+  const { tables } = useSelector((state) => state.tables);
+  const { sales } = useSelector((state) => state.sales);
 
   const handleCheckout = async (e, isCompleted, table = null) => {
     try {
       e.preventDefault();
-
       const response = await api.checkoutOrder({ body: {
         orders,
         selectedInventories,
         totalPrice,
-        isCompleted
+        isCompleted,
+        table: table === "takeout" ? null : table,
       }});
 
       if (response.status === 200) {
         dispatch(updateInventories(response.data.inventories));        
         alert(response.data.message);
+        if (!isEmpty(response.data.table)) {
+          const updatedTables = tables.map((t) => {
+            if (t._id === response.data.table._id) {
+              return response.data.table;
+            }
+            return t;
+          });
+          dispatch(updateTables(updatedTables));
+        }
+        dispatch(updateSales([sales, response.data.sale].flat()));
         onClearBottomSheet();
         // NOT YET IMPLEMENTED
         // ADD SETTING BOTTOM SHEET INDEX TO 0 [DONE onClearBottomSheet]
@@ -52,7 +65,9 @@ export default function InventoryCheckout({ orders, selectedInventories, totalPr
 
   function InventoryModal(){
     const [showModal, setShowModal] = useState(false);
+    const [selectedTable, setSelectedTable] = useState("");
     const ref = useRef(null);
+
     return (
       <Center
         sx= {{
@@ -72,7 +87,7 @@ export default function InventoryCheckout({ orders, selectedInventories, totalPr
           onPress={() => setShowModal(true)} ref={ref}
           action={"positive"}
         >
-          <Text color="black">Prepare</Text>
+          <Text color="white">Prepare</Text>
         </Button>
         <Modal
           isOpen={showModal}
@@ -95,7 +110,41 @@ export default function InventoryCheckout({ orders, selectedInventories, totalPr
                 }}
               >
                 <Text size="lg">For:</Text>
-                <SelectComponent />
+                <Select
+                  sx={{
+                    width: "80%",
+                  }}
+                  onValueChange={value => setSelectedTable(value)}
+                >
+                  <SelectTrigger>
+                    <SelectInput placeholder="Select option" />
+                    <SelectIcon mr={3}>
+                      <Icon as={ChevronDownIcon} />
+                    </SelectIcon>
+                  </SelectTrigger>
+                  <SelectPortal>
+                    <SelectBackdrop />
+                    <SelectContent>
+                      <SelectDragIndicatorWrapper>
+                        <SelectDragIndicator />
+                      </SelectDragIndicatorWrapper>
+                      <ScrollView
+                        style={{
+                          width: "100%",
+                        }}
+                      >
+                        <SelectItem label="Take out" value="takeout" />
+                        {
+                          tables.map((table, index) => {
+                            return (
+                              <SelectItem key={index} label={table.name} value={table._id} />
+                            )
+                          })
+                        }
+                      </ScrollView>
+                    </SelectContent>
+                  </SelectPortal>
+                </Select>
               </Box>
             </ModalBody>
             <ModalFooter>
@@ -115,8 +164,8 @@ export default function InventoryCheckout({ orders, selectedInventories, totalPr
                 action="positive"
                 borderWidth='$0'
                 // onPress={(e) => {handleCheckout(e, false)}}
-                onPress={() => {
-                  setShowModal(false);
+                onPress={(e) => {
+                  handleCheckout(e, false, selectedTable);
                 }}
               >
                 <ButtonText>Prepare</ButtonText>
@@ -203,29 +252,33 @@ export default function InventoryCheckout({ orders, selectedInventories, totalPr
             }}
           >
             { //NOT YET IMPLEMENTED MAKE !isEmpty and &&
-              isEmpty(establishment.settings) || get(establishment.settings, "tablesEnabled", false) === true 
+              !isEmpty(establishment.settings) && get(establishment.settings, "tablesEnabled", false) && get(establishment.settings, "preparationEnabled", false)
                 ?
                   <InventoryModal />
                 :
-                  <Button
-                    sx={{
-                      width: "40%",
-                      height: 50,
-                      justifyContent: "center",
-                      alignItems: "center",
-                      backgroundColor: "#F00B51",
-                      borderRadius: 24,
-                      marginTop: 7,
-                      marginRight: "5%",
-                    }}
-                    onPress={(e) => {handleCheckout(e, false)}}
-                  >
-                    <Text color="black">Prepare</Text>
-                  </Button>
+                !isEmpty(establishment.settings) && get(establishment.settings, "preparationEnabled", false)
+                  ? 
+                    <Button
+                      sx={{
+                        width: "40%",
+                        height: 50,
+                        justifyContent: "center",
+                        alignItems: "center",
+                        backgroundColor: "#F00B51",
+                        borderRadius: 24,
+                        marginTop: 7,
+                        marginRight: "5%",
+                      }}
+                      onPress={(e) => {handleCheckout(e, false)}}
+                    >
+                      <Text color="black">Prepare</Text>
+                    </Button>
+                  :
+                    null
             }
             <Button
               sx={{
-                width: "40%",
+                width: !isEmpty(establishment.settings) && get(establishment.settings, "preparationEnabled", false) ? "40%" : "50%",
                 height: 50,
                 justifyContent: "center",
                 alignItems: "center",
