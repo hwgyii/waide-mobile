@@ -1,13 +1,21 @@
 {
   "expo": {
-    "name": "waide-mobile",
-    "slug": "waide-mobile",
+    "name": "Waide",
+    "slug": "waide",
     "version": "1.0.0",
     "assetBundlePatterns": [
       "**/*"
     ],
     "plugins": [
       "expo-router"
-    ]
+    ],
+    "icon": "./src/assets/logo-only.png"
+  },
+  "android": {
+    "package": "com.waide.app",
+    "adaptiveIcon": {
+      "foregroundImage": "./src/assets/logo-only.png",
+      "backgroundColor": "#FFFFFF"
+    }
   }
 }
