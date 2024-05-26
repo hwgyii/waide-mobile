@@ -8,6 +8,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { updateInventories } from "../../redux/reducers/inventory";
 import { updateTables } from "../../redux/reducers/table";
 import { updateSales } from "../../redux/reducers/sales";
+import dayjs from "dayjs";
 
 /** 
   NOT YET IMPLEMENTED:
@@ -196,13 +197,35 @@ export default function InventoryCheckout({ orders, selectedInventories, totalPr
           height: "15%",
         }}
       >
+        <Box
+          sx={{
+            flexDirection: "row",
+            marginTop: 15,
+            justifyContent: "space-between",
+            alignItems: "center",
+          }}
+        >
+          <Text marginLeft={10}>{establishment.name}</Text>
+          <Text marginRight={10}>{dayjs().add(8, "hours").format("MMM D, YYYY")}</Text>
+        </Box>
+        <Box
+          sx={{
+            flexDirection: "row",
+            justifyContent: "space-between",
+            alignItems: "center",
+          }}
+        >
+          <Text marginLeft={10}></Text>
+          <Text marginRight={10}>{dayjs().add(8, "hours").format("hh:mm A")}</Text>
+        </Box>
+
 
       </Box>
       {/* ORDERS INFO */}
       <Divider bgColor="black" />
       <Box
         sx={{
-          height: "64%"
+          height: "63%"
         }}
       >
         {
@@ -238,7 +261,6 @@ export default function InventoryCheckout({ orders, selectedInventories, totalPr
               flexDirection: "row",
               justifyContent: "space-between",
               alignItems: "center",
-              marginBottom: 15,
             }}
           >
             <Text style={{ marginLeft: 10 }}>{selectedInventories} selected</Text>

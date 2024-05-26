@@ -54,14 +54,12 @@ export default function SalesBottomSheet({ selectedTable, setSelectedTable }) {
         alert(`${selectedTable.name} is now ${availability === 0 ? "available" : availability === 1 ? "occupied" : "reserved"}.`);
         setIndex(0);
         if (response.data.table.availability === 1) {
-          console.log(response.data.table.passcode + " is the passcode for " + response.data.table.name + ".");
-          console.log(response.data.table.currentToken + " is the current token for " + response.data.table.name + ".");
         }
         // NOT YET IMPLEMENTED
         // KAPAG NAG-OCCUPY, ALERT YUNG LINK PARA MAKAPAG-ORDER ONLINE YUNG CUSTOMER OR YUNG QR CODE TO ORDER ONLINE
       }
     } catch (error) {
-      console.log(JSON.stringify(error, null, 2));
+      console.error(error);
     }
   };
 
@@ -120,7 +118,7 @@ export default function SalesBottomSheet({ selectedTable, setSelectedTable }) {
           {/* ORDER INFO BODY */}
           <Box
             sx={{
-              height: "80%",
+              height: "75%",
               width: "100%",
               marginTop: 15,
             }}
@@ -190,7 +188,6 @@ export default function SalesBottomSheet({ selectedTable, setSelectedTable }) {
               flexDirection: "row",
               justifyContent: "space-between",
               alignItems: "center",
-              marginBottom: 15,
             }}
           >
             <Text style={{ marginLeft: 10 }}>{!isEmpty(selectedTable) ? selectedTable.name : ""}</Text>
@@ -386,7 +383,6 @@ export default function SalesBottomSheet({ selectedTable, setSelectedTable }) {
                     flexDirection: "row",
                     justifyContent: "space-between",
                     alignItems: "center",
-                    marginBottom: 15,
                   }}
                 >
                   <Text style={{ marginLeft: 10 }}>{!isEmpty(selectedTable) ? selectedTable.name : "Table #"}</Text>

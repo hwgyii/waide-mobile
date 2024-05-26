@@ -49,7 +49,7 @@ export default function InventoryBottomSheet({ orders, selectedInventories, tota
       <Box>
         <Box
           sx={{
-            height: "82.5%",
+            height: "81%",
             width: "100%",
           }}
         >
@@ -64,7 +64,6 @@ export default function InventoryBottomSheet({ orders, selectedInventories, tota
                     flexDirection: "row",
                     justifyContent: "space-between",
                     alignItems: "center",
-                    marginBottom: 15,
                   }}
                 >
                   <Text style={{ marginLeft: 10 }}>{order.orderSize}</Text>
@@ -137,7 +136,6 @@ export default function InventoryBottomSheet({ orders, selectedInventories, tota
                         flexDirection: "row",
                         justifyContent: "space-between",
                         alignItems: "center",
-                        marginBottom: 15,
                       }}
                     >
                       <Text style={{ marginLeft: 10 }}>{selectedInventories} selected</Text>

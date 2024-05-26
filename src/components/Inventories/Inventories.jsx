@@ -49,10 +49,6 @@ export default function Inventories() {
   };
 
   useEffect(() => {
-    fetchTables();
-  }, []);
-
-  useEffect(() => {
     fetchInventories();
     fetchTables();
   }, []);

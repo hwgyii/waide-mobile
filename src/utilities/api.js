@@ -34,6 +34,11 @@ export const logIn = (options) => {
   return requestBuilder.executeOpenPostRequest(url, options);
 };
 
+export const logOut = () => {
+  const url = `${getBaseUrl()}/user/logout`;
+  return requestBuilder.executeAuthenticatedPostRequest(url);
+};
+
 export const getUser = () => {
   const url = `${getBaseUrl()}/user/me`;
   return requestBuilder.executeAuthenticatedGetRequest(url);

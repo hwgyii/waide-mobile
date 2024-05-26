@@ -78,7 +78,7 @@ export default function SalesBottomSheet({ selectedSales, onCheckoutOrder }) {
           {/* ORDER INFO BODY */}
           <Box
             sx={{
-              height: "80%",
+              height: "75%",
               width: "100%",
               marginTop: 15,
             }}
@@ -116,7 +116,6 @@ export default function SalesBottomSheet({ selectedSales, onCheckoutOrder }) {
               flexDirection: "row",
               justifyContent: "space-between",
               alignItems: "center",
-              marginBottom: 15,
             }}
           >
             <Text style={{ marginLeft: 10 }}>Order ID: {isEmpty(selectedSales) ? "" : selectedSales._id.slice(-10)}</Text>
@@ -164,7 +163,6 @@ export default function SalesBottomSheet({ selectedSales, onCheckoutOrder }) {
                     flexDirection: "row",
                     justifyContent: "space-between",
                     alignItems: "center",
-                    marginBottom: 15,
                   }}
                 >
                   <Text style={{ marginLeft: 10 }}>Order ID: {!isEmpty(selectedSales) ? selectedSales._id.slice(-10) : ""}</Text>

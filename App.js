@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
-import { GluestackUIProvider } from "@gluestack-ui/themed";
+import { Box, GluestackUIProvider, Spinner, Text } from "@gluestack-ui/themed";
 import { config } from "@gluestack-ui/config";
-import { get, isEmpty } from "lodash";
+import { get, isEmpty, set } from "lodash";
 import { Provider, useSelector } from "react-redux";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
@@ -12,71 +12,87 @@ import { store } from "./src/redux/store.js";
 import { useDispatch } from "react-redux";
 
 import Authentication from "./src/pages/Authentication";
-import Inventories from "./src/components/Inventories/Inventories.jsx";
 import { getAuth, getEstablishment } from "./src/redux/reducers/auth.js";
-import Orders from "./src/components/Orders/Orders.jsx";
-import Tables from "./src/components/Tables/Tables.jsx";
-import Settings from "./src/pages/Settings.jsx";
-import InventoriesCRUD from "./src/components/CRUD/Inventories/InventoriesCRUD.jsx";
-import Receipts from "./src/components/CRUD/Receipts/Receipts.jsx";
-import TablesCRUD from "./src/components/CRUD/Tables/TablesCRUD.jsx";
-import Establishments from "./src/components/Customer/Establishments/Establishments.jsx";
 import AppNavigation from "./src/navigation/AppNavigation.jsx";
-import CustomerReceipts from "./src/components/Customer/Receipts/CustomerReceipts.jsx";
-import Ordering from "./src/components/Customer/Ordering/Ordering.jsx";
+import CustomerNavigation from "./src/navigation/CustomerNavigation.jsx";
 
 function App() {
+  const [isLoaded, setIsLoaded] = useState(false);
+  const [componentToRender, setComponentToRender] = useState("Authentication");
   const dispatch = useDispatch();
-  async function getUser() {
-    try {
-      const sessionToken = await AsyncStorage.getItem("sessionToken");
-      if (sessionToken) {
-        const response = await api.getUser(sessionToken);
-        if (!isEmpty(response.data.user) && response.status === 200) {
-          dispatch(getAuth(response.data.user));
-          if (response.data.user.role === 1 && response.data.establishment) {
-            dispatch(getEstablishment(response.data.establishment));
+
+  useEffect(() => {
+    async function getUser() {
+      try {
+        const sessionToken = await AsyncStorage.getItem("sessionToken");
+        if (sessionToken) {
+          const response = await api.getUser(sessionToken);
+          if (!isEmpty(response.data.user) && response.status === 200) {
+            dispatch(getAuth(response.data.user));
+            if (response.data.user.role === 1 && response.data.establishment) {
+              dispatch(getEstablishment(response.data.establishment));
+            }
+            await AsyncStorage.setItem("user", JSON.stringify(response.data.user));
+            setComponentToRender(response.data.user.role === 1 && response.data.establishment ? "Establishment" : "Customer");
           }
-          await AsyncStorage.setItem("user", JSON.stringify(response.data.user));
+        } else {
+          //  NAVIGATE TO LOGIN PAGE
+          setComponentToRender("Authentication");
         }
-      } else {
-        //  NAVIGATE TO LOGIN PAGE
-      }
-    } catch (error) {
-      if (error.response && error.response.status === 403) {
-        alert("Session expired. Please login again.");
-        await AsyncStorage.clear();
-        //  NAVIGATE TO LOGIN PAGE
-      } else {
-        console.error(error);
-        // Handle other types of errors (e.g., network error)
-        // You might want to display a generic error message or retry the request
-        // Example: alert("An error occurred. Please try again later.");
+      } catch (error) {
+        if (error.response && error.response.status === 403) {
+          alert("Session expired. Please login again.");
+          await AsyncStorage.clear();
+          //  NAVIGATE TO LOGIN PAGE
+          setComponentToRender("Authentication");
+        } else {
+          console.error(error);
+        }
       }
     }
-  }
-  
-  useEffect(() => {
+
     getUser();
+    setIsLoaded(true);
   }, []);
+
+  function Loading() {
+    return (
+      <Box
+        sx={{
+          width: "100%",
+          height: "100%",
+          justifyContent: "center",
+          alignItems: "center",
+        }}
+      >
+        <Spinner size={"xl"} style={{ height: 100, width: 100 }} />
+      </Box>
+    );
+  }
+
+  const rendercomponent = () => {
+    switch (componentToRender) {
+      case "Authentication":
+        return <Authentication setAppToRender={setComponentToRender} />;
+      case "Establishment":
+        return <AppNavigation setAppToRender={setComponentToRender} />;
+      case "Customer":
+        return <CustomerNavigation setAppToRender={setComponentToRender} />;
+      default:
+        return <Authentication setAppToRender={setComponentToRender} />;
+    };
+  };
 
   return (
     <Provider store={store}>
       <GluestackUIProvider config={config}>
-        {/* <Authentication /> */}
-        {/* <LoginCard /> */}
-        {/* <SignupCard /> */}
-        {/* <Inventories /> */}
-        {/* <Orders /> */}
-        {/* <Tables /> */}
-        {/* <Settings /> */}
-        {/* <InventoriesCRUD /> */}
-        {/* <Receipts />  */}
-        {/* <TablesCRUD /> */}
-        {/* <Establishments /> */}
-        {/* <CustomerReceipts /> */}
-        <Ordering />
-        {/* <AppNavigation /> */}
+        {
+          isLoaded
+            ?
+              rendercomponent()
+            :
+              <Loading />
+        }
       </GluestackUIProvider>
     </Provider>
   )

@@ -5,13 +5,13 @@ import AuthenticationCard from "../components/Authentication/AuthenticationCard"
 import LoginCard from "../components/Authentication/LoginCard";
 import Signup from "../components/Authentication/Signup";
 
-export default function Authentication() {
+export default function Authentication({ setAppToRender }) {
   const [componentToRender, setAuthenticationToRender] = useState("authentication");
 
   const renderComponents = () => {
     switch (componentToRender) {
       case "login":
-        return <LoginCard setAuthenticationToRender={setAuthenticationToRender} />;
+        return <LoginCard setAuthenticationToRender={setAuthenticationToRender} setAppToRender={setAppToRender} />;
       case "signup":
         return <Signup setAuthenticationToRender={setAuthenticationToRender} />;
       case "authentication":

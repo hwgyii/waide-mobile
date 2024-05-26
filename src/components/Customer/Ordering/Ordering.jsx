@@ -70,7 +70,6 @@ export default function Ordering() {
       })
 
       if (response.status === 200) {
-        console.log(response.data.table);
         setTable(response.data.table);
         setInventories(response.data.inventories);
       }
@@ -138,6 +137,7 @@ export default function Ordering() {
                     alignItems: "center",
                     borderColor: "black",
                     borderWidth: 1,
+                    marginBottom: 300,
                   }}
                 >
                   <Input placeholder="Table Access Code"
@@ -185,7 +185,7 @@ export default function Ordering() {
                   style={{
                     height: 870,
                     width: "100%",
-                    marginBottom: 350,
+                    marginBottom: 450,
                   }}
                 >
                   {

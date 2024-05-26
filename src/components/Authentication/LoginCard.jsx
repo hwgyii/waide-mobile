@@ -13,11 +13,11 @@ import * as api from "../../utilities/api";
 import { useDispatch } from "react-redux";
 import { getAuth, getEstablishment } from "../../redux/reducers/auth";
 
-export default function LoginCard({ setAuthenticationToRender }) {
+export default function LoginCard({ setAuthenticationToRender, setAppToRender }) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const dispatch = useDispatch();
-
+  
   //Handle login
   const onLogin = async (e) => {
     e.preventDefault();
@@ -34,6 +34,8 @@ export default function LoginCard({ setAuthenticationToRender }) {
         dispatch(getAuth(response.data.user));
 
         if (response.data.user.role === 1 && response.data.establishment) dispatch(getEstablishment(response.data.establishment));
+
+        setAppToRender(response.data.user.role === 1 && response.data.establishment ? "Establishment" : "Customer")
       }
     } catch (error) {
       alert(error.response.data.message);

@@ -19,13 +19,16 @@ import { useEffect } from "react";
 import * as api from "../utilities/api";
 import { getEstablishment } from "../redux/reducers/auth";
 import { get } from "lodash";
-import { createDrawerNavigator } from "@react-navigation/drawer";
+import { createDrawerNavigator, DrawerContentScrollView, DrawerItemList } from "@react-navigation/drawer";
+import { Box, Divider, Image, Pressable, Text, View } from "@gluestack-ui/themed";
+import { TouchableOpacity } from "react-native";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
 const Drawer = createDrawerNavigator();
 
-export default function AppNavigation() {
+export default function AppNavigation({ setAppToRender }) {
   function BottomTabStack() {
     return(
       <Stack.Navigator screenOptions={{ headerShown: false }}>
@@ -134,14 +137,65 @@ export default function AppNavigation() {
     );
   };
 
+  function CustomDrawerContent({props}) {
+    const { establishment } = useSelector((state) => state.auth);
+
+    const onLogout = async () => {
+      try {
+        const response = await api.logOut();
+        if (response.status === 200) {
+          await AsyncStorage.clear();
+          setAppToRender("Authentication");
+        } 
+      } catch (error) {
+        console.error(error);
+      }
+    };
+    return (
+      <View style={{ flex: 1 }}>
+        <DrawerContentScrollView {...props}>
+          <Box
+            sx={{
+              height: 150,
+              backgroundColor: "#FE8383",
+              width: "100%",
+              marginTop: -5,
+            }}
+          >
+            <Text marginTop={20} marginLeft={10} fontSize={24} fontWeight="bold" color="black">{establishment.name}</Text>
+            <Text marginTop={10} marginLeft={10} fontSize={16} color="black">{establishment.address}</Text>
+          </Box>
+          <DrawerItemList {...props} />
+        </DrawerContentScrollView>
+        <Pressable
+          style={{ 
+            position: "absolute",
+            right: 0,
+            left: 0,
+            bottom: 0,
+            backgroundColor: "#DDDDDD",
+            padding: 20,
+          }}
+        >
+          <TouchableOpacity
+            onPress={() => {onLogout();}}
+          >
+            <Text>Logout</Text>
+          </TouchableOpacity>
+        </Pressable>
+      </View>
+    )
+  };
+
   function DrawerNavigation() {
     return (
-      <Drawer.Navigator screenOptions={{
-        drawerStyle: {
-          width: "70%",
-        },
-      }}>
-        <Drawer.Screen name="BottomTabs" component={BottomTabStack} options={{
+      <Drawer.Navigator
+      drawerContent={(props) => <CustomDrawerContent props={props} />}
+      screenOptions={{
+          headerTitle: () => <Image alt="App Logo" source={require("../assets/AppLogo.png")} style={{ width: 250, resizeMode: "contain" }} />
+        }}
+      >
+        <Drawer.Screen name="Establishment Features" component={BottomTabStack} options={{
         }}/>
         <Drawer.Screen name="Tables Settings" component={TablesCRUD} />
         <Drawer.Screen name="Inventories Settings" component={InventoriesCRUD} />
