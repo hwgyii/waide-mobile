@@ -1,11 +1,12 @@
 import { Box, CircleIcon, SafeAreaView, ScrollView, Spinner } from "@gluestack-ui/themed";
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { Text } from "react-native";
 
 import * as api from "../utilities/api";
 import dayjs from "dayjs";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
 import { PieChart } from "react-native-gifted-charts";
+import { useFocusEffect } from "@react-navigation/native";
 
 const colors = [
   "#FF0000", "#FF6600", "#FFCC00", "#FFFF00", "#CCFF00", "#66FF00", "#00FF00", "#00FF66", "#00FFCC", "#00FFFF",
@@ -42,9 +43,9 @@ export default function Home() {
     }
   };
 
-  useEffect(() => {
+  useFocusEffect(useCallback(() => {
     getTodaysSales();
-  }, []);
+  }, []));
 
   useEffect(() => {
     const pieData = [];
