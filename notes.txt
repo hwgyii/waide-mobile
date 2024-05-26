@@ -7,3 +7,26 @@ in every CRUD component, ayusin and gawing unified.
 
 Send Notification when a customer requested for delivery.
 Send Push Notification when a customer added a review.
+
+
+Login label sa login card, lakihan fontsize. [DONE]
+show password
+forgot password
+
+inventories, remove search field [DONE]
+
+mas mataas na checkout order sa orders page [DONE]
+
+order checkout, yung delivery address/description, liitan yung width, [DONE]
+
+Establishment Settings, Ayusin yung pagpantay nung mga selects. [DONE]
+
+Logout button, bold [DONE]
+
+Home Page, yung Table ayusin yung pagpantay [DONE]
+
+delivery address, add sa user db
+
+Customer UI, Bottom Navigation Bar [DONE]
+
+Customer ordering, not functioning... [DONE] 

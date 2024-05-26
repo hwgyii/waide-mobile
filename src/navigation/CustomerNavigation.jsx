@@ -11,7 +11,7 @@ import InventoriesCRUD from "../components/CRUD/Inventories/InventoriesCRUD";
 import Receipts from "../components/CRUD/Receipts/Receipts";
 import Settings from "../pages/Settings";
 
-import { MaterialIcons } from "@expo/vector-icons";
+import { Entypo, Ionicons, MaterialIcons } from "@expo/vector-icons";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 
@@ -41,11 +41,51 @@ export default function CustomerNavigation({ setAppToRender }) {
       <Tab.Navigator
         screenOptions={{
           headerShown: false,
+          tabBarStyle: { height: 70 }
         }}
       >
-        <Tab.Screen name="Establishments" component={Establishments} />
-        <Tab.Screen name="Receipts" component={CustomerReceipts} />
-        <Tab.Screen name="Ordering" component={Ordering} />
+        <Tab.Screen
+          name="Establishments"
+          component={Establishments}
+          options={{
+            tabBarLabelStyle : {
+              fontSize: 16,
+            },
+            tabBarIcon: ({ focused }) => {
+              return (
+                <Entypo name="shop" size={30} color={focused ? "blue" : "black"} />
+              )
+            },
+          }}
+        />
+        <Tab.Screen
+          name="Receipts"
+          component={CustomerReceipts}
+          options={{
+            tabBarLabelStyle : {
+              fontSize: 16,
+            },
+            tabBarIcon: ({ focused }) => {
+              return (
+                <Ionicons name="receipt" size={30} color={focused ? "blue" : "black"} />
+              )
+            },
+          }}
+        />
+        <Tab.Screen
+          name="Ordering"
+          component={Ordering}
+          options={{
+            tabBarLabelStyle : {
+              fontSize: 16,
+            },
+            tabBarIcon: ({ focused }) => {
+              return (
+                <MaterialIcons name="menu-book" size={30} color={focused ? "blue" : "black"} />
+              )
+            },
+          }}
+        />
       </Tab.Navigator>
     );
   };
@@ -92,7 +132,7 @@ export default function CustomerNavigation({ setAppToRender }) {
           <TouchableOpacity
             onPress={() => {onLogout();}}
           >
-            <Text>Logout</Text>
+            <Text fontWeight="bold" fontSize={16}>Logout</Text>
           </TouchableOpacity>
         </Pressable>
       </View>

@@ -180,7 +180,7 @@ export default function AppNavigation({ setAppToRender }) {
           <TouchableOpacity
             onPress={() => {onLogout();}}
           >
-            <Text>Logout</Text>
+            <Text fontWeight="bold" fontSize={16}>Logout</Text>
           </TouchableOpacity>
         </Pressable>
       </View>

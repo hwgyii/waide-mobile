@@ -47,7 +47,7 @@ export default function Orders() {
           alignItems: "center",
         }}
       >
-        <Text style={{ fontSize: 32 }}>Orders</Text>
+        <Text style={{ fontSize: 32, fontWeight:"bold" }}>Orders</Text>
       </Box>
     );
   };

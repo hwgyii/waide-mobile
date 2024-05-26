@@ -46,7 +46,7 @@ export default function Tables() {
           alignItems: "center",
         }}
       >
-        <Text style={{ fontSize: 32 }}>Tables</Text>
+        <Text style={{ fontSize: 32, fontWeight:"bold" }}>Tables</Text>
       </Box>
     );
   };

@@ -140,10 +140,18 @@ export default function Home() {
                       marginTop: 20,
                     }}
                   >
-                    <CircleIcon color={colors[0]} />
-                    <Text style={{ fontSize: 20, marginLeft: 10 }}>Product</Text>
-                    <Text style={{ fontSize: 20, marginLeft: 10 }}>Quantity</Text>
-                    <Text style={{ fontSize: 20, marginLeft: 10 }}>Percentage</Text>
+                    <Box width={"5%"}>
+                      <CircleIcon color={colors[0]} />
+                    </Box>
+                    <Box width={"45%"}>
+                      <Text style={{ fontSize: 20, marginLeft: 10 }}>Product</Text>
+                    </Box>
+                    <Box width={"30%"}>
+                      <Text style={{ fontSize: 20, marginLeft: 10 }}>Quantity</Text>
+                    </Box>
+                    <Box width={"20%"} alignItems="center">
+                    <Text style={{ fontSize: 20, marginLeft: 10 }}>%</Text>
+                    </Box>
                   </Box>
                 </Box>
                 <ScrollView
@@ -165,12 +173,21 @@ export default function Home() {
                                 justifyContent: "space-between",
                                 flexDirection: "row",
                                 alignItems: "center",
+                                marginBottom: 5,
                               }}
                             >
-                              <CircleIcon color={colors[index]} />
-                              <Text style={{ fontSize: 20, marginLeft: 10 }}>{sale.name}</Text>
-                              <Text style={{ fontSize: 20, marginLeft: 10 }}>{sale.quantity}</Text>
-                              <Text style={{ fontSize: 20, marginLeft: 10 }}>{(sale.percentage).toFixed(2)}%</Text>
+                              <Box width={"5%"}>
+                                <CircleIcon color={colors[index]} />
+                              </Box>
+                              <Box width={"45%"}>
+                                <Text style={{ fontSize: 16, marginLeft: 10 }}>{sale.name}</Text>
+                              </Box>
+                              <Box width={"30%"} alignItems="center">
+                                <Text style={{ fontSize: 16, marginLeft: 10 }}>{sale.quantity}</Text>
+                              </Box>
+                              <Box width={"20%"}>
+                                <Text style={{ fontSize: 16, marginLeft: 10 }}>{(sale.percentage).toFixed(2)}%</Text>
+                              </Box>
                             </Box>
                           )
                         })

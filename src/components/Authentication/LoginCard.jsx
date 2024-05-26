@@ -97,7 +97,7 @@ export default function LoginCard({ setAuthenticationToRender, setAppToRender })
           paddingTop: 10,
         }}
       >
-        <Text size="lg">Login</Text>
+        <Text fontSize={28} fontWeight="bold">Login</Text>
       </Box>
       {/*Login Forms*/}
       <VStack

@@ -7,7 +7,7 @@ import InventoryCheckout from "./InventoryCheckout";
 import { useFocusEffect } from "@react-navigation/native";
 
 export default function InventoryBottomSheet({ orders, selectedInventories, totalPrice, onClearOrders }) {
-  const snapPoints = useMemo(() => ['15%', '95%'], []);
+  const snapPoints = useMemo(() => ['20%', '95%'], []);
   const [index, setIndex] = useState(0);
   const [checkingOut, setCheckingOut] = useState(false);
 
@@ -109,7 +109,6 @@ export default function InventoryBottomSheet({ orders, selectedInventories, tota
                 alignItems: "center",
                 backgroundColor: "#F00B51",
                 borderRadius: 24,
-                marginTop: 7
               }}
               onPress={() => setCheckingOut(true)}
               isDisabled={selectedInventories === 0}
@@ -158,6 +157,7 @@ export default function InventoryBottomSheet({ orders, selectedInventories, tota
                           alignItems: "center",
                           backgroundColor: "#F00B51",
                           borderRadius: 24,
+                          marginTop: 20,
                         }}
                         onPress={() => setCheckingOut(true)}
                         isDisabled={selectedInventories === 0}

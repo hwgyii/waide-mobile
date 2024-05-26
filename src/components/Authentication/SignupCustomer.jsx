@@ -107,7 +107,7 @@ export default function SignupCustomer({ setSignupToRender, setAuthenticationToR
           paddingTop: 10,
         }}
       >
-        <Text fontSize={32}>Signup - Customer</Text>
+        <Text fontSize={32} fontWeight="bold">Signup - Customer</Text>
       </Box>
       {/*Signup Customer Forms*/}
       <VStack

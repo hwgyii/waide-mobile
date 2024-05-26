@@ -7,7 +7,7 @@ import { isEmpty } from "lodash";
 import dayjs from "dayjs";
 
 export default function SalesBottomSheet({ selectedSales, onCheckoutOrder }) {
-  const snapPoints = useMemo(() => ['15%', '90%'], []);
+  const snapPoints = useMemo(() => ['20%', '90%'], []);
   const [index, setIndex] = useState(0);
   const [checkingOut, setCheckingOut] = useState(false);
 
@@ -70,7 +70,9 @@ export default function SalesBottomSheet({ selectedSales, onCheckoutOrder }) {
                 flexDirection: "row",
               }}
             >
-              <Text style={{ marginLeft: 10 }}>{selectedSales.description ? selectedSales.description : null}</Text>
+              <Box width={"70%"}>
+                <Text style={{ marginLeft: 10 }}>{selectedSales.description ? selectedSales.description : null}</Text>
+              </Box>
               <Text style={{ marginRight: 10, marginBottom: 10 }}>{dayjs(selectedSales.createdAt).add(8, "hours").format("hh:mm A")}</Text>
             </Box>
           </Box>
@@ -137,7 +139,6 @@ export default function SalesBottomSheet({ selectedSales, onCheckoutOrder }) {
                 alignItems: "center",
                 backgroundColor: "#F00B51",
                 borderRadius: 24,
-                marginTop: 7
               }}
               onPress={onCheckoutOrder}
               isDisabled={isEmpty(selectedSales)}
@@ -184,6 +185,7 @@ export default function SalesBottomSheet({ selectedSales, onCheckoutOrder }) {
                       alignItems: "center",
                       backgroundColor: "#F00B51",
                       borderRadius: 24,
+                      marginTop: 20,
                     }}
                     onPress={() => setCheckingOut(true)}
                     isDisabled={isEmpty(selectedSales)}

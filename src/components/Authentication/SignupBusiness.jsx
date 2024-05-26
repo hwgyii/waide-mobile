@@ -141,7 +141,7 @@ export default function SignupBusiness({ setSignupToRender, setAuthenticationToR
           paddingTop: 10,
         }}
       >
-        <Text fontSize={32}>Signup - Business</Text>
+        <Text fontSize={32} fontWeight="bold">Signup - Business</Text>
       </Box>
       {/*Signup Business Forms*/}
       {

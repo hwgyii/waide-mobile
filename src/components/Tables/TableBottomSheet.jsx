@@ -14,7 +14,7 @@ export default function SalesBottomSheet({ selectedTable, setSelectedTable }) {
   const { tables } = useSelector((state) => state.tables);
   const dispatch = useDispatch();
 
-  const snapPoints = useMemo(() => ['15%', '90%'], []);
+  const snapPoints = useMemo(() => ['20%', '90%'], []);
   const [index, setIndex] = useState(0);
   const [checkingOut, setCheckingOut] = useState(false);
 
@@ -397,6 +397,7 @@ export default function SalesBottomSheet({ selectedTable, setSelectedTable }) {
                           flexDirection: "row",
                           justifyContent: "center",
                           alignItems: "center",
+                          marginTop: 20,
                         }}
                       >
                         <Button
@@ -438,6 +439,7 @@ export default function SalesBottomSheet({ selectedTable, setSelectedTable }) {
                               flexDirection: "row",
                               justifyContent: "center",
                               alignItems: "center",
+                              marginTop: 20,
                             }}
                           >
                             <Button
@@ -464,6 +466,7 @@ export default function SalesBottomSheet({ selectedTable, setSelectedTable }) {
                                   flexDirection: "row",
                                   justifyContent: "center",
                                   alignItems: "center",
+                                  marginTop: 20,
                                 }}
                               >
                                 <Button
@@ -503,6 +506,7 @@ export default function SalesBottomSheet({ selectedTable, setSelectedTable }) {
                                   flexDirection: "row",
                                   justifyContent: "center",
                                   alignItems: "center",
+                                  marginTop: 20,
                                 }}
                               >
                                 <Button

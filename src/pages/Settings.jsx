@@ -84,87 +84,105 @@ export default function Settings() {
         </Box>
         <Box
           sx= {{
+            width: "100%",
+            height: 50,
             flexDirection: "row",
             justifyContent: "space-between",
             alignItems: "center",
             padding: "20px 10px",
-            borderBottomWidth: 1,
-            borderBottomColor: "#ccc",
+            borderBottomWidth: 2,
+            borderBottomColor: "black",
             marginBottom: 15,
           }}
         >
-          <HStack space="md"
-            sx={{
-              marginLeft: 20
-            }}
-          >
-            <Switch size={"lg"} value={settings.isOpen} onToggle={() => onToggleSwitch("isOpen")}/>
-            <Text>Establishment Open</Text>
-          </HStack>
-          <HStack space="md"
-            sx={{
-              marginRight: 20
-            }}
-          >
-            <Switch size={"lg"} value={settings.deliveryEnabled} onToggle={() => onToggleSwitch("deliveryEnabled")}/>
-            <Text>Delivery</Text>
-          </HStack>
+          <Box width={"62%"}>
+            <HStack space="md"
+              sx={{
+                marginLeft: 20
+              }}
+            >
+              <Switch size={"lg"} value={settings.isOpen} onToggle={() => onToggleSwitch("isOpen")}/>
+              <Text>Establishment Open</Text>
+            </HStack>
+          </Box>
+          <Box width={"38%"}>
+            <HStack space="md"
+              sx={{
+                marginRight: 20
+              }}
+            >
+              <Switch size={"lg"} value={settings.deliveryEnabled} onToggle={() => onToggleSwitch("deliveryEnabled")}/>
+              <Text>Delivery</Text>
+            </HStack>
+          </Box>
         </Box>
         <Box
           sx= {{
+            width: "100%",
+            height: 50,
             flexDirection: "row",
             justifyContent: "space-between",
             alignItems: "center",
             padding: "20px 10px",
-            borderBottomWidth: 1,
-            borderBottomColor: "#ccc",
+            borderBottomWidth: 2,
+            borderBottomColor: "black",
             marginBottom: 15,
           }}
         >
-          <HStack space="md"
-            sx={{
-              marginLeft: 20
-            }}
-          >
-            <Switch size={"lg"} value={settings.inventoryEnabled} onToggle={() => onToggleSwitch("inventoryEnabled")}/>
-            <Text>Inventory</Text>
-          </HStack>
-          <HStack space="md"
-            sx={{
-              marginRight: 20
-            }}
-          >
-            <Switch size={"lg"} value={settings.invoiceEnabled} onToggle={() => onToggleSwitch("invoiceEnabled")}/>
-            <Text>Invoice</Text>
-          </HStack>
+          <Box width={"62%"}>
+            <HStack space="md"
+              sx={{
+                marginLeft: 20
+              }}
+            >
+              <Switch size={"lg"} value={settings.inventoryEnabled} onToggle={() => onToggleSwitch("inventoryEnabled")}/>
+              <Text>Inventory</Text>
+            </HStack>
+          </Box>
+          <Box width={"38%"}>
+            <HStack space="md"
+              sx={{
+                marginRight: 20
+              }}
+            >
+              <Switch size={"lg"} value={settings.invoiceEnabled} onToggle={() => onToggleSwitch("invoiceEnabled")}/>
+              <Text>Invoice</Text>
+            </HStack>
+          </Box>
         </Box>
         <Box
           sx= {{
+            width: "100%",
+            height: 50,
             flexDirection: "row",
             justifyContent: "space-between",
             alignItems: "center",
             padding: "20px 10px",
-            borderBottomWidth: 1,
-            borderBottomColor: "#ccc",
+            borderBottomWidth: 2,
+            borderBottomColor: "black",
             marginBottom: 15,
           }}
         >
-          <HStack space="md"
-            sx={{
-              marginLeft: 20
-            }}
-          >
-            <Switch size={"lg"} value={settings.preparationEnabled} onToggle={() => onToggleSwitch("preparationEnabled")}/>
-            <Text>Inventory Preparation</Text>
-          </HStack>
-          <HStack space="md"
-            sx={{
-              marginRight: 20,
-            }}
-          >
-            <Switch size={"lg"} value={settings.tablesEnabled} onToggle={() => onToggleSwitch("tablesEnabled")}/>
-            <Text>Tables</Text>
-          </HStack>
+          <Box width={"62%"}>
+            <HStack space="md"
+              sx={{
+                marginLeft: 20
+              }}
+            >
+              <Switch size={"lg"} value={settings.preparationEnabled} onToggle={() => onToggleSwitch("preparationEnabled")}/>
+              <Text>Inventory Preparation</Text>
+            </HStack>
+          </Box>
+          <Box width={"38%"}>
+            <HStack space="md"
+              sx={{
+                marginRight: 20,
+              }}
+            >
+              <Switch size={"lg"} value={settings.tablesEnabled} onToggle={() => onToggleSwitch("tablesEnabled")}/>
+              <Text>Tables</Text>
+            </HStack>
+          </Box>
         </Box>
         <Box
           sx={{

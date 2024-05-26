@@ -69,7 +69,7 @@ export default function SignupCard({ setAuthenticationToRender, setSignupToRende
           paddingTop: 10,
         }}
       >
-        <Text fontSize={32}>Signup</Text>
+        <Text fontSize={32} fontWeight="bold">Signup</Text>
         <Text fontSize={20} sx={{ marginBottom: 15 }}>as</Text>
       </Box>
       {/*Buttons for Customer and Establishment*/}

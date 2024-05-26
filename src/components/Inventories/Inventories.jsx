@@ -122,8 +122,8 @@ export default function Inventories() {
             - Better UI for the header
             - Find a better way to implement the header
         */}
-        <Text style={{ fontSize: 32, marginLeft: "35%"}}>Inventory</Text>
-        <Input placeholder="Email"
+        <Text style={{ fontSize: 32, marginLeft: "35%", fontWeight: "bold" }}>Inventory</Text>
+        {/* <Input placeholder="Email"
             variant="outline"
             size="md"
             isDisabled={false}
@@ -140,7 +140,7 @@ export default function Inventories() {
               onEndEditing={() => {setSearchInventory(temp)}}
               onBlur={() => {setSearchInventory(temp)}}
             />
-          </Input>
+          </Input> */}
       </Box>
     );
   };
