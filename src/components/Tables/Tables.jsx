@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useCallback, useState } from "react";
 import { Box, Input, ScrollView, Spinner, } from "@gluestack-ui/themed";
 import { Text, SafeAreaView, Dimensions, TextInput, } from "react-native";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
@@ -10,6 +10,7 @@ import * as api from "../../utilities/api";
 import { isEmpty, } from "lodash";
 import { useSelector, useDispatch } from "react-redux";
 import { getTables, updateTables } from "../../redux/reducers/table";
+import { useFocusEffect } from "@react-navigation/native";
 
 export default function Tables() {
   const [isLoaded, setIsLoaded] = useState(false);
@@ -30,9 +31,9 @@ export default function Tables() {
     }
   };
 
-  useEffect(() => {
+  useFocusEffect(useCallback(() => {
     fetchTables();
-  }, []);
+  }, []));
 
   function TablesHeader() {
     return (

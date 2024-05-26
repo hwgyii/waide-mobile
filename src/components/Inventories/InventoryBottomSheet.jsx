@@ -1,24 +1,25 @@
 import { Box, Button, View } from "@gluestack-ui/themed";
 import { Text, StyleSheet } from "react-native";
 
-import { useState, useMemo, useCallback, useEffect } from "react";
+import { useState, useMemo, useCallback } from "react";
 import BottomSheet from "@gorhom/bottom-sheet";
 import InventoryCheckout from "./InventoryCheckout";
+import { useFocusEffect } from "@react-navigation/native";
 
 export default function InventoryBottomSheet({ orders, selectedInventories, totalPrice, onClearOrders }) {
   const snapPoints = useMemo(() => ['15%', '95%'], []);
   const [index, setIndex] = useState(0);
   const [checkingOut, setCheckingOut] = useState(false);
 
-  useEffect(() => {
+  useFocusEffect(useCallback(() => {
     if (checkingOut) {
       setIndex(1);
     }
-  }, [checkingOut]);
+  }, [checkingOut]));
 
-  useEffect(() => {
+  useFocusEffect(useCallback(() => {
     if (index === 0) setCheckingOut(false);
-  }, [index]);
+  }, [index]));
 
   const handleSheetChanges = useCallback((index) => {
     setIndex(index);

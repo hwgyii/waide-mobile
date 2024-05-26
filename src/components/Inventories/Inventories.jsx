@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useCallback, useState } from "react";
 import { Box, Input, ScrollView, Spinner, } from "@gluestack-ui/themed";
 import { Text, SafeAreaView, Dimensions, TextInput, } from "react-native";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
@@ -10,6 +10,7 @@ import * as api from "../../utilities/api";
 import { isEmpty, } from "lodash";
 import { useSelector, useDispatch } from "react-redux";
 import { getTables } from "../../redux/reducers/table";
+import { useFocusEffect } from "@react-navigation/native";
 
 export default function Inventories() {
   const [isLoaded, setIsLoaded] = useState(false);
@@ -48,12 +49,14 @@ export default function Inventories() {
     }
   };
 
-  useEffect(() => {
-    fetchInventories();
-    fetchTables();
-  }, []);
+  useFocusEffect(
+    useCallback(() => {
+      fetchInventories();
+      fetchTables();
+    }, [])
+  );
 
-  useEffect(() => {
+  useFocusEffect(useCallback(() => {
     let total = 0;
     let count = 0;
     for (const key in orders) {
@@ -65,15 +68,15 @@ export default function Inventories() {
     }
     setTotalPrice(total);
     setSelectedInventories(count);
-  }, [orders]);
+  }, [orders]));
 
-  useEffect(() => {
+  useFocusEffect(useCallback(() => {
     if (searchInventory === "") {
       setFilteredInventories([]);
     } else {
       setFilteredInventories(inventories.filter((inventory) => inventory.name.toLowerCase().includes(searchInventory.toLowerCase())));
     }
-  }, [searchInventory]);
+  }, [searchInventory]));
   
   const onSetOrder = (order) => {
     setOrders((prev) => {
