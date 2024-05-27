@@ -153,3 +153,8 @@ export const accessOrdering = (options) => {
   const url = `${getBaseUrl()}/tables/access`;
   return requestBuilder.executeAuthenticatedPostRequest(url, options);
 };
+
+export const getGrossSales = (options) => {
+  const url = `${getBaseUrl()}/reports/gross-sales/?year=${get(options, "selectedYear")}&quarter=${get(options, "selectedQuarter")}`;
+  return requestBuilder.executeAuthenticatedGetRequest(url);
+};

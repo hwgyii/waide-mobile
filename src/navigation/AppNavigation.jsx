@@ -23,6 +23,7 @@ import { createDrawerNavigator, DrawerContentScrollView, DrawerItemList } from "
 import { Box, Divider, Image, Pressable, Text, View } from "@gluestack-ui/themed";
 import { TouchableOpacity } from "react-native";
 import AsyncStorage from "@react-native-async-storage/async-storage";
+import TaxCalculator from "../pages/TaxCalculator";
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -200,6 +201,7 @@ export default function AppNavigation({ setAppToRender }) {
         <Drawer.Screen name="Tables Settings" component={TablesCRUD} />
         <Drawer.Screen name="Inventories Settings" component={InventoriesCRUD} />
         <Drawer.Screen name="Receipts" component={Receipts} />
+        <Drawer.Screen name="Business Tax Calculator" component={TaxCalculator} />
         <Drawer.Screen name="Settings" component={Settings} />
       </Drawer.Navigator>
     );

@@ -29,4 +29,12 @@ delivery address, add sa user db
 
 Customer UI, Bottom Navigation Bar [DONE]
 
-Customer ordering, not functioning... [DONE] 
+Customer ordering, not functioning... [DONE]
+
+Tax Calculator (https://mpm.ph/bir-form-1701/) (https://taxcalculatorphilippines.online/how-are-income-tax-calculated-for-a-business-in-philippines/) (https://mpm.ph/bir-tax-tables-2023/) [DONE]
+Invoices
+Generate Reports
+Push Notification
+BUILD APK
+Socket Server
+API SERVER DEPLOYMENT
