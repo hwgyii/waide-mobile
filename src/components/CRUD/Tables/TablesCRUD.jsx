@@ -19,7 +19,7 @@ function TablesCRUDHeader() {
         alignItems: "center",
       }}
     >
-      <Text style={{ fontSize: 32 }}>Tables Settings</Text>
+      <Text style={{ fontSize: 32, fontWeight: "bold" }}>Tables Settings</Text>
     </Box>
   );
 };

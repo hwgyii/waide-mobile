@@ -32,7 +32,7 @@ export default function Settings() {
           alignItems: "center",
         }}
       >
-        <Text style={{ fontSize: 32 }}>Settings</Text>
+        <Text style={{ fontSize: 32, fontWeight: "bold" }}>Settings</Text>
       </Box>
     );
   };

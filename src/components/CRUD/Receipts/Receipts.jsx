@@ -31,7 +31,7 @@ export default function Receipts() {
             - ADD A FILTER MODAL HERE
             - DATE RANGE FILTER
         */}
-        <Text style={{ fontSize: 32 }}>Receipts</Text>
+        <Text style={{ fontSize: 32, fontWeight: "bold" }}>Receipts</Text>
       </Box>
     );
   };

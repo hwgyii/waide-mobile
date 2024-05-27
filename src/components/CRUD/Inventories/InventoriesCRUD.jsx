@@ -44,7 +44,7 @@ export default function InventoriesCRUD({}) {
           alignItems: "center",
         }}
       >
-        <Text style={{ fontSize: 32 }}>Inventory Settings</Text>
+        <Text style={{ fontSize: 32, fontWeight: "bold" }}>Inventory Settings</Text>
       </Box>
     );
   };
