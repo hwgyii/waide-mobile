@@ -9,7 +9,16 @@
     "plugins": [
       "expo-router"
     ],
-    "icon": "./src/assets/logo-only.png"
+    "icon": "./src/assets/logo-only.png",
+    "userInterfaceStyle": "automatic",
+    "extra": {
+      "router": {
+        "origin": false
+      },
+      "eas": {
+        "projectId": "232cfd2c-3f1c-40ca-8db6-23d1d93258f5"
+      }
+    }
   },
   "android": {
     "package": "com.waide.app",
