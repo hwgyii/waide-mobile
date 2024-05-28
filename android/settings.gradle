@@ -1,4 +1,4 @@
-rootProject.name = 'waidemobile'
+rootProject.name = 'Waide'
 
 dependencyResolutionManagement {
   versionCatalogs {

@@ -33,8 +33,34 @@ Customer ordering, not functioning... [DONE]
 
 Tax Calculator (https://mpm.ph/bir-form-1701/) (https://taxcalculatorphilippines.online/how-are-income-tax-calculated-for-a-business-in-philippines/) (https://mpm.ph/bir-tax-tables-2023/) [DONE]
 Invoices
+ESTABLISHMENT SIDE TO SEE THEIR REVIEWS
 Generate Reports
 Push Notification
-BUILD APK
+BUILD APK [DONE]
 Socket Server
 API SERVER DEPLOYMENT
+
+
+TO ASK FOR ESTABLISHMENT REPORTS:
+  MGA NAIISIP:
+    - SALES REPORT
+      - FROM AND TO DATES
+      - SORTING OF INVENTORIES/INVOICES SOLD (LEAST TO MOST OR MOST TO LEAST)
+    - INVENTORIES/INVOICES REPORT (REDUNDANT SO ASK KUNG GAWING SALES REPORT NA LANG)
+      - FROM AND TO DATES
+      - SORTING OF INVENTORIES/INVOICES SOLD (LEAST TO MOST OR MOST TO LEAST)
+
+Notes:
+	Sa presentation, sabihin yung mga ginawa per objective ng study. (2:50 minute - 5 minute)
+
+
+
+Offline readiness - kahit hindi na gawin. (ilagay sa recommendations)
+QR Code Based - try pa din gawin. (5:15 sec - 7:00 minute)
+Taxation Calculator - ilagay din sa recommendation yung mga sinabi din ni anj and imma sa messenger (10 minutes - 13 minutes)
+top up ewallet - all goods remove
+summary reports - pdf/document (14 minutes - 17 minutes)
+Reservation - Try implement pa din pero pwedeng i-ask na lang and ilagay sa recommendations (17 minutes)
+Customer App - Establishments (Add icon para makitang pwedeng pumasok)
+Customer App - Lagay placeholders for images (30 minutes)
+34 minutes - Summary reports

@@ -7,9 +7,17 @@
       "**/*"
     ],
     "plugins": [
-      "expo-router"
+      "expo-router",
+      [
+        "expo-build-properties", 
+        {
+          "android": {
+            "usesCleartextTraffic": true // ? enable HTTP requests
+          }
+        }
+      ]
     ],
-    "icon": "./src/assets/logo-only.png",
+    "icon": "./assets/logo-only.png",
     "userInterfaceStyle": "automatic",
     "extra": {
       "router": {
@@ -18,13 +26,21 @@
       "eas": {
         "projectId": "232cfd2c-3f1c-40ca-8db6-23d1d93258f5"
       }
+    },
+    "android": {
+      "package": "com.hwgyii.waide"
     }
   },
   "android": {
     "package": "com.waide.app",
     "adaptiveIcon": {
-      "foregroundImage": "./src/assets/logo-only.png",
+      "foregroundImage": "./assets/logo-only.png",
       "backgroundColor": "#FFFFFF"
+    },
+    "config": {
+      "clearText": {
+        "include": "http://47.129.9.118:3000/"
+      }
     }
   }
 }

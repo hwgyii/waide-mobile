@@ -1,4 +1,4 @@
-package com.waidemobile
+package com.hwgyii.waide
 
 import android.os.Build
 import android.os.Bundle

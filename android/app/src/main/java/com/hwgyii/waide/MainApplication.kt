@@ -1,4 +1,4 @@
-package com.waidemobile
+package com.hwgyii.waide
 
 import android.app.Application
 import android.content.res.Configuration
