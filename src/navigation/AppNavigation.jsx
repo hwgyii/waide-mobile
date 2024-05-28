@@ -11,6 +11,8 @@ import TablesCRUD from "../components/CRUD/Tables/TablesCRUD";
 import InventoriesCRUD from "../components/CRUD/Inventories/InventoriesCRUD";
 import Receipts from "../components/CRUD/Receipts/Receipts";
 import Settings from "../pages/Settings";
+import TaxCalculator from "../pages/TaxCalculator";
+import Reports from "../pages/Reports";
 
 import { MaterialIcons } from "@expo/vector-icons";
 import { useDispatch, useSelector } from "react-redux";
@@ -23,7 +25,6 @@ import { createDrawerNavigator, DrawerContentScrollView, DrawerItemList } from "
 import { Box, Divider, Image, Pressable, Text, View } from "@gluestack-ui/themed";
 import { TouchableOpacity } from "react-native";
 import AsyncStorage from "@react-native-async-storage/async-storage";
-import TaxCalculator from "../pages/TaxCalculator";
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -196,12 +197,14 @@ export default function AppNavigation({ setAppToRender }) {
           headerTitle: () => <Image alt="App Logo" source={require("../assets/AppLogo.png")} style={{ width: 250, resizeMode: "contain" }} />
         }}
       >
+        {/* <Drawer.Screen name="Reports" component={Reports} /> */}
         <Drawer.Screen name="Establishment Features" component={BottomTabStack} options={{
         }}/>
         <Drawer.Screen name="Tables Settings" component={TablesCRUD} />
         <Drawer.Screen name="Inventories Settings" component={InventoriesCRUD} />
         <Drawer.Screen name="Receipts" component={Receipts} />
         <Drawer.Screen name="Business Tax Calculator" component={TaxCalculator} />
+        <Drawer.Screen name="Reports" component={Reports} />
         <Drawer.Screen name="Settings" component={Settings} />
       </Drawer.Navigator>
     );

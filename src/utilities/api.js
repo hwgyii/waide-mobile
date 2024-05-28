@@ -6,14 +6,8 @@ export const getBaseUrl = () => {
   if (NODE_ENV === "development") {
     return "http://192.168.1.8:3000";
   } else if (NODE_ENV === "staging") {
-    const stagingUrl = get(process.env, "EXPO_STAGING_API_URL");
-
-    if (stagingUrl) {
-      return stagingUrl;
-    } else {
-      // eslint-disable-next-line no-throw-literal
-      throw { message: "Missing STAGING-API url. Contact your app administrator." }    
-    }
+    // return "http://47.129.9.118:3000"; for production
+      return "http://47.129.9.118:3000";
   }
 }
 
