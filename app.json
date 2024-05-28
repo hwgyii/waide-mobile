@@ -28,11 +28,13 @@
       }
     },
     "android": {
-      "package": "com.hwgyii.waide"
+      "package": "com.hwgyii.waide",
+      "permissions": ["WRITE_EXTERNAL_STORAGE", "READ_EXTERNAL_STORAGE"],
     }
   },
   "android": {
     "package": "com.waide.app",
+    "permissions": ["WRITE_EXTERNAL_STORAGE", "READ_EXTERNAL_STORAGE"],
     "adaptiveIcon": {
       "foregroundImage": "./assets/logo-only.png",
       "backgroundColor": "#FFFFFF"
