@@ -4,9 +4,9 @@ import { get } from "lodash";
 export const getBaseUrl = () => {
   const NODE_ENV = get(process.env, "EXPO_NODE_ENV", "development");
   if (NODE_ENV === "development") {
-    return "http://192.168.1.8:3000";
+    return "http://47.129.9.118:3000"; //for production
+    // return "http://192.168.1.8:3000";
   } else if (NODE_ENV === "staging") {
-    // return "http://47.129.9.118:3000"; for production
       return "http://47.129.9.118:3000";
   }
 }

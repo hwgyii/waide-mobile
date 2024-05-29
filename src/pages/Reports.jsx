@@ -11,7 +11,7 @@ import { isEmpty } from "lodash";
 import * as FileSystem from "expo-file-system";
 import * as MediaLibrary from "expo-media-library";
 import { shareAsync } from "expo-sharing";
-
+import { getBaseUrl } from "../utilities/api";
 
 
 const dataToSelect = [
@@ -54,7 +54,7 @@ export default function Reports() {
 
   const downloadSalesReport = async () => {
     try {
-      const url = `http://192.168.1.8:3000/reports/establishment/sales/?establishmentId=${establishment._id}&from=${dayjs(fromDate).format("YYYY-MM-DD")}&to=${dayjs(toDate).format("YYYY-MM-DD")}`;
+      const url = `${getBaseUrl()}/reports/establishment/sales/?establishmentId=${establishment._id}&from=${dayjs(fromDate).format("YYYY-MM-DD")}&to=${dayjs(toDate).format("YYYY-MM-DD")}`;
 
       const fileName = `${establishment.name.replace(/[^a-zA-Z0-9]/g, '_')}_Sales_Report_${dayjs(fromDate).format("YYYY-MM-DD")}_${dayjs(toDate).format("YYYY-MM-DD")}.pdf`;
       
@@ -80,7 +80,7 @@ export default function Reports() {
 
   const downloadInventoryReport = async () => {
     try {
-      const url = `http://192.168.1.8:3000/reports/establishment/inventory?establishmentId=${establishment._id}`;
+      const url = `${getBaseUrl()}/reports/establishment/inventory?establishmentId=${establishment._id}`;
 
       const fileName = `${establishment.name.replace(/[^a-zA-Z0-9]/g, '_')}_Inventory_Report_${dayjs().format("YYYY-MM-DD")}}.pdf`;
       
