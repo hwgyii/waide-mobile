@@ -62,7 +62,7 @@ export default function SalesBottomSheet({ selectedSales, onCheckoutOrder }) {
               }}
             >
               <Text style={{ marginLeft: 10 }}>Order ID: {isEmpty(selectedSales) ? "" : selectedSales._id.slice(-10)}</Text>
-              <Text style={{ marginRight: 10 }}>{dayjs(selectedSales.createdAt).add(8, "hours").format("MMM D, YYYY")}</Text>
+              <Text style={{ marginRight: 10 }}>{dayjs(selectedSales.createdAt).format("MMM D, YYYY")}</Text>
             </Box>
             <Box
               sx={{
@@ -73,7 +73,7 @@ export default function SalesBottomSheet({ selectedSales, onCheckoutOrder }) {
               <Box width={"70%"}>
                 <Text style={{ marginLeft: 10 }}>{selectedSales.description ? selectedSales.description : null}</Text>
               </Box>
-              <Text style={{ marginRight: 10, marginBottom: 10 }}>{dayjs(selectedSales.createdAt).add(8, "hours").format("hh:mm A")}</Text>
+              <Text style={{ marginRight: 10, marginBottom: 10 }}>{dayjs(selectedSales.createdAt).format("hh:mm A")}</Text>
             </Box>
           </Box>
           <Divider bgColor="black" />

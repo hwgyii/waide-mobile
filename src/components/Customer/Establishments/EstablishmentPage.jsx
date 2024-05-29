@@ -425,7 +425,7 @@ export default function EstablishmentPage({ establishmentId, setComponent }) {
                       >
                         <Text marginLeft={10} fontSize={16}>{review.user.fullName}</Text>
                       </Box>
-                      <Text marginRight={10} fontSize={16}>{dayjs(review.createdAt).add(8, "hours").format("DD/MM/YYYY")}</Text>
+                      <Text marginRight={10} fontSize={16}>{dayjs(review.createdAt).format("DD/MM/YYYY")}</Text>
                     </Box>
                     <Box
                       sx={{

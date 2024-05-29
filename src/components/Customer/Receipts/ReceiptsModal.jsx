@@ -52,7 +52,7 @@ export default function ReceiptsModal({ receipt, index }) {
                   marginBottom: 10,
                 }}
               >
-                <Text fontSize={12}>Ordered on: {dayjs(receipt.createdAt).add(8, "hours").format("ddd, MMM DD, YYYY hh:mm A")}</Text>
+                <Text fontSize={12}>Ordered on: {dayjs(receipt.createdAt).format("ddd, MMM DD, YYYY hh:mm A")}</Text>
                 <Text fontSize={12}>Order ID: {receipt.sales._id.slice(10)}</Text>
               </Box>
               <Text fontSize={16} fontWeight="bold" marginRight={10}>{receipt.sales.isCompleted ? "Delivered" : "Preparing"}</Text>
@@ -79,7 +79,7 @@ export default function ReceiptsModal({ receipt, index }) {
               >
                 <Text>{receipt.establishment.name}</Text>
                 <Text>Receipt ID: {receipt.sales._id.slice(10)}</Text>
-                <Text>{dayjs(receipt.sales.createdAt).add(8, "hours").format("MMM DD, YYYY hh:mm A")}</Text>
+                <Text>{dayjs(receipt.sales.createdAt).format("MMM DD, YYYY hh:mm A")}</Text>
                 <Divider bgColor="black" marginTop={10}/>
                 {
                   get(receipt.sales, "items", []).map((item, index) => (

@@ -122,8 +122,8 @@ export default function Home() {
                             alignItems: "center",
                           }}
                         >
-                          <Text style={{ fontSize: 16, fontWeight: "500" }}>{dayjs().add(8, "hours").format("MMMM DD, YYYY")}</Text>
-                          <Text style={{ fontSize: 12, fontWeight: "500" }}>{updateTime}</Text>
+                          <Text style={{ fontSize: 16, fontWeight: "500" }}>{dayjs().format("MMMM DD, YYYY")}</Text>
+                          <Text style={{ fontSize: 12, fontWeight: "500" }}>{dayjs().format("hh:mm A")}</Text>
                           <Text style={{ fontSize: 24, fontWeight: "bold" }}>Php {totalSales.toFixed(2)}</Text>
                         </Box>
                       )

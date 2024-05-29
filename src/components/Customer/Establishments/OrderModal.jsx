@@ -73,7 +73,7 @@ export default function OrderModal({ establishment, orders, selectedInventories,
                   }}
                 >
                   <Text>{establishment.name}</Text>
-                  <Text>{dayjs().add(8, "hours").format("MMM DD, YYYY")}</Text>
+                  <Text>{dayjs().format("MMM DD, YYYY")}</Text>
                 </Box>
                 <Box
                   sx={{
@@ -83,7 +83,7 @@ export default function OrderModal({ establishment, orders, selectedInventories,
                   }}
                 >
                   <Text>For Delivery</Text>
-                  <Text>{dayjs().add(8, "hours").format("hh:mm A")}</Text>
+                  <Text>{dayjs().format("hh:mm A")}</Text>
                 </Box>
               </Box>
               <Divider bgColor="black" />

@@ -206,7 +206,7 @@ export default function InventoryCheckout({ orders, selectedInventories, totalPr
           }}
         >
           <Text marginLeft={10}>{establishment.name}</Text>
-          <Text marginRight={10}>{dayjs().add(8, "hours").format("MMM D, YYYY")}</Text>
+          <Text marginRight={10}>{dayjs().format("MMM D, YYYY")}</Text>
         </Box>
         <Box
           sx={{
@@ -216,7 +216,7 @@ export default function InventoryCheckout({ orders, selectedInventories, totalPr
           }}
         >
           <Text marginLeft={10}></Text>
-          <Text marginRight={10}>{dayjs().add(8, "hours").format("hh:mm A")}</Text>
+          <Text marginRight={10}>{dayjs().format("hh:mm A")}</Text>
         </Box>
 
 

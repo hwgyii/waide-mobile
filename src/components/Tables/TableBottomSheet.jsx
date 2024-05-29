@@ -102,7 +102,7 @@ export default function SalesBottomSheet({ selectedTable, setSelectedTable }) {
               }}
             >
               <Text style={{ marginLeft: 10 }}>{!isEmpty(selectedTable) ? selectedTable.name : ""}</Text>
-              <Text style={{ marginRight: 10 }}>{dayjs(selectedTable.sales?.updatedAt).add(8, "hours").format("MMM D, YYYY")}</Text>
+              <Text style={{ marginRight: 10 }}>{dayjs(selectedTable.sales?.updatedAt).format("MMM D, YYYY")}</Text>
             </Box>
             <Box
               sx={{
@@ -111,7 +111,7 @@ export default function SalesBottomSheet({ selectedTable, setSelectedTable }) {
               }}
             >
               <Text style={{ marginLeft: 10 }}>{selectedTable.description ? selectedTable.description : null}</Text>
-              <Text style={{ marginRight: 10, marginBottom: 10 }}>{dayjs(selectedTable.sales?.updatedAt).add(8, "hours").format("hh:mm A")}</Text>
+              <Text style={{ marginRight: 10, marginBottom: 10 }}>{dayjs(selectedTable.sales?.updatedAt).format("hh:mm A")}</Text>
             </Box>
           </Box>
           <Divider bgColor="black" />

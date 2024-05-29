@@ -25,7 +25,7 @@ export default function SalesCard({ sales, index, onPressSalesCard }) {
           }}
         >
           <Text style={{ marginLeft: 10 }}>Order ID: {sales._id.slice(-10)}</Text>
-          <Text style={{ marginRight: 10 }}>{dayjs(sales.createdAt).add(8, "hours").format("MMM D, YYYY hh:mm A")}</Text>
+          <Text style={{ marginRight: 10 }}>{dayjs(sales.createdAt).format("MMM D, YYYY hh:mm A")}</Text>
         </Box>
         <Box
           sx={{
