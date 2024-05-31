@@ -114,7 +114,7 @@ export default function EstablishmentProfile() {
                   <Text fontSize={24} fontWeight="bold" textAlign="justify">Address: {establishment.address}</Text>
                   <Text fontSize={24} fontWeight="bold" textAlign="justify">Operating Hours: {establishment.operatingHours}</Text>
                   <Box sx={{ width: "90%", alignItems: "center", justifyContent: "center", marginTop: 20 }}>
-                    <Button sx={{ width: "48%" }} onPress={() => setIsEditing(true)}>
+                    <Button sx={{ width: "50%", ml: 40 }} onPress={() => setIsEditing(true)}>
                       <ButtonText>Edit Profile</ButtonText>
                     </Button>
                   </Box>
