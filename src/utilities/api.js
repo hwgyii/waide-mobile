@@ -158,3 +158,8 @@ export const getReviews = () => {
   const url = `${getBaseUrl()}/establishment/reviews`;
   return requestBuilder.executeAuthenticatedGetRequest(url);
 };
+
+export const editEstablishment = (options) => {
+  const url = `${getBaseUrl()}/establishment/${get(options, "establishmentId")}`;
+  return requestBuilder.executeAuthenticatedPatchRequest(url, options);
+};

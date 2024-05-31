@@ -26,6 +26,7 @@ import { Box, Divider, Image, Pressable, Text, View } from "@gluestack-ui/themed
 import { TouchableOpacity } from "react-native";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import Reviews from "../pages/Reviews";
+import EstablishmentProfile from "../pages/EstablishmentProfile";
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -199,12 +200,12 @@ export default function AppNavigation({ setAppToRender }) {
         }}
       >
         {/* <Drawer.Screen name="Reports" component={Reports} /> */}
-        <Drawer.Screen name="Establishment Features" component={BottomTabStack} options={{
-        }}/>
+        <Drawer.Screen name="Establishment Features" component={BottomTabStack}/>
+        <Drawer.Screen name="Establishment Profile" component={EstablishmentProfile}/>
         <Drawer.Screen name="Tables Settings" component={TablesCRUD} />
         <Drawer.Screen name="Inventories Settings" component={InventoriesCRUD} />
-        <Drawer.Screen name="Receipts" component={Receipts} />
         <Drawer.Screen name="Business Tax Calculator" component={TaxCalculator} />
+        <Drawer.Screen name="Receipts" component={Receipts} />
         <Drawer.Screen name="Reports" component={Reports} />
         <Drawer.Screen name="Reviews" component={Reviews} />
         <Drawer.Screen name="Settings" component={Settings} />
