@@ -1,7 +1,8 @@
 import { Box, Button, Divider, View } from "@gluestack-ui/themed";
-import { Text, StyleSheet } from "react-native";
+import { Modal, ModalBackdrop, ModalContent, ModalHeader, ModalCloseButton, ModalBody, ModalFooter, Heading, Text, ButtonText } from "@gluestack-ui/themed";
+import { StyleSheet } from "react-native";
 
-import { useState, useMemo, useCallback, useEffect } from "react";
+import { useState, useMemo, useCallback, useEffect, useRef } from "react";
 import BottomSheet from "@gorhom/bottom-sheet";
 import { isEmpty, set } from "lodash";
 import dayjs from "dayjs";
@@ -9,6 +10,7 @@ import dayjs from "dayjs";
 import * as api from "../../utilities/api";
 import { useDispatch, useSelector } from "react-redux";
 import { updateTables } from "../../redux/reducers/table";
+import QRCode from "react-native-qrcode-svg";
 
 export default function SalesBottomSheet({ selectedTable, setSelectedTable }) {
   const { tables } = useSelector((state) => state.tables);
@@ -66,6 +68,61 @@ export default function SalesBottomSheet({ selectedTable, setSelectedTable }) {
   const onCheckoutTable = async (event) => {
     changeTableAvailability(event, 0);
     setIndex(0);
+  };
+
+  function QRCodeModal() {
+    const [showModal, setShowModal] = useState(false);
+    const ref = useRef(null);
+
+    return (
+      <>
+        <Button
+          sx={{
+            width: "40%",
+            height: 50,
+            justifyContent: "center",
+            alignItems: "center",
+            borderRadius: 24,
+            marginRight: "5%",
+          }}
+          onPress={() => setShowModal(true)}
+          isDisabled={isEmpty(selectedTable)}
+        >
+          <Text>SHOW QR CODE</Text>
+        </Button>
+        <Modal
+          isOpen={showModal}
+          onClose={() => {
+            setShowModal(false);
+          }}
+          finalFocusRef={ref}
+        >
+          <ModalBackdrop />
+          <ModalContent>
+            <ModalHeader>
+              <Heading size='lg'>{`${selectedTable.name}'s QR Code`}</Heading>
+              <ModalCloseButton><Text underline={true} color="red">Close</Text></ModalCloseButton>
+            </ModalHeader>
+            <ModalBody>
+              <Box
+                sx={{
+                  height: 400,
+                  flexDirection: "column",
+                  justifyContent: "center",
+                  alignItems: "center",
+                }}
+              >
+                <QRCode
+                  value={JSON.stringify({ currentToken: selectedTable.currentToken, passcode: selectedTable.passcode })}
+                  size={200}
+                  ecl="L"
+                />
+              </Box>
+            </ModalBody>
+          </ModalContent>
+        </Modal>
+      </>
+    )
   };
 
   function ExtendedBottomSheet() {
@@ -442,9 +499,10 @@ export default function SalesBottomSheet({ selectedTable, setSelectedTable }) {
                               marginTop: 20,
                             }}
                           >
+                            <QRCodeModal />
                             <Button
                               sx={{
-                                width: "50%",
+                                width: "40%",
                                 height: 50,
                                 justifyContent: "center",
                                 alignItems: "center",

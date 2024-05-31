@@ -1,7 +1,10 @@
 import { Box, Button, ButtonText, Input, InputField, SafeAreaView, ScrollView, Text } from "@gluestack-ui/themed";
-import { get, isEmpty } from "lodash";
-import { useEffect, useState } from "react";
+import { get, isEmpty, set } from "lodash";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
+
+import React, { useState, useEffect } from 'react';
+import { View, StyleSheet } from 'react-native';
+import { Camera } from 'expo-camera';
 
 import * as api from "../../../utilities/api";
 import InventoryCard from "../Establishments/InventoryCard";
@@ -11,8 +14,8 @@ import OrderingModal from "./OrderingModal";
 // IF GUMAWA NG SOCKET SERVER, KAPAG CHINECKOUT YUNG TABLE, REMOVE ALL DITO TAPOS ALERT NA SUCCESSFULLY CHECKED OUT AND THANK YOU FOR ORDERING
 
 export default function Ordering() {
-  const [currentToken, setCurrentToken] = useState("1rlx65i88lwhequ5x");
-  const [passcode, setPasscode] = useState("295865");
+  const [currentToken, setCurrentToken] = useState("");
+  const [passcode, setPasscode] = useState("");
   const [table, setTable] = useState({});
   const [inventories, setInventories] = useState([]);
 
@@ -79,6 +82,73 @@ export default function Ordering() {
     }
   };
 
+  function QRCodeScanner() {
+    const [hasCameraPermission, setHasCameraPermission] = useState(null);
+    const [scanned, setScanned] = useState(false);
+    const [type, setType] = useState(Camera.Constants.Type.back); // Default to the back camera
+  
+    useEffect(() => {
+      const requestPermissions = async () => {
+        const { status } = await Camera.requestCameraPermissionsAsync();
+        setHasCameraPermission(status === 'granted');
+      };
+  
+      requestPermissions();
+    }, []);
+  
+    const handleBarCodeScanned = async ({ type, data }) => {
+      if (scanned) return;
+      setScanned(true);
+      const data1 = JSON.parse(data);
+      try {
+        const response = await api.accessOrdering({
+          body: {
+            currentToken: data1.currentToken,
+            passcode: data1.passcode
+          }
+        })
+  
+        if (response.status === 200) {
+          setTable(response.data.table);
+          console.log(response.data.table);
+          setInventories(response.data.inventories);
+        }
+      } catch (error) {
+        setScanned(false);
+        alert(error.response.data.message);
+        console.error(error);
+      }
+    };
+  
+    if (hasCameraPermission === null) {
+      return <Text>Requesting for camera permission</Text>;
+    }
+    if (hasCameraPermission === false) {
+      return <Text>No access to camera</Text>;
+    }
+
+    return (
+      <View style={{
+        flexDirection: 'column',
+        justifyContent: 'flex-end',
+        borderWidth: 1,
+        borderColor: "black",
+        width: "90%",
+        height: 200,
+      }}>
+        <Camera
+          style={StyleSheet.absoluteFillObject}
+          type={type}
+          onBarCodeScanned={handleBarCodeScanned}
+          barCodeScannerSettings={{
+            interval: 10000,
+          }}
+          >
+        </Camera>
+      </View>
+    );
+  }
+
   return (
     <GestureHandlerRootView>
       <SafeAreaView
@@ -121,8 +191,26 @@ export default function Ordering() {
             {
               !isEmpty(table) &&
               <>
-                <Text style={{ marginLeft: 10 }}>{get(table, "name", "")}</Text>
-                <Text style={{ marginRight: 10 }}>Php{get(table, "totalPrice", 0).toFixed(2)}</Text>
+                <Box
+                  sx={{
+                    width: "100%",
+                    marginLeft: 10,
+                    justifyContent: "center",
+                    height: 150,
+                  }}
+                >
+                  <Text fontSize={24} fontWeight={"bold"} >{table.establishment.name}</Text>
+                  <Box
+                    sx={{
+                      flexDirection: "row",
+                      justifyContent: "space-between",
+                      alignItems: "center",
+                    }}
+                  >
+                    <Text fontWeight="bold">{get(table, "name", "")}</Text>
+                    <Text style={{ marginRight: 20, fontWeight: "bold" }}>Php {get(table, "totalPrice", 0).toFixed(2)}</Text>
+                  </Box>
+                </Box>
               </>
             }
           </Box>
@@ -179,6 +267,8 @@ export default function Ordering() {
                   <Button disabled={currentToken.length === 0 || passcode.length === 0} onPress={() => onAccessOrdering()}>
                     <ButtonText>Submit</ButtonText>
                   </Button>
+                  <Text marginTop={10} marginBottom={10}>Or</Text>
+                  <QRCodeScanner />
                 </Box>
               :
                 <ScrollView

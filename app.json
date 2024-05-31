@@ -15,6 +15,14 @@
             "usesCleartextTraffic": true // ? enable HTTP requests
           }
         }
+      ],
+      [
+        "expo-camera",
+        {
+          "cameraPermission": "Allow $(PRODUCT_NAME) to access your camera",
+          "microphonePermission": "Allow $(PRODUCT_NAME) to access your microphone",
+          "recordAudioAndroid": true
+        }
       ]
     ],
     "icon": "./assets/logo-only.png",
@@ -29,12 +37,12 @@
     },
     "android": {
       "package": "com.hwgyii.waide",
-      "permissions": ["WRITE_EXTERNAL_STORAGE", "READ_EXTERNAL_STORAGE"],
+      "permissions": ["WRITE_EXTERNAL_STORAGE", "READ_EXTERNAL_STORAGE", "CAMERA", "RECORD_AUDIO"]
     }
   },
   "android": {
     "package": "com.waide.app",
-    "permissions": ["WRITE_EXTERNAL_STORAGE", "READ_EXTERNAL_STORAGE"],
+    "permissions": ["WRITE_EXTERNAL_STORAGE", "READ_EXTERNAL_STORAGE", "CAMERA", "RECORD_AUDIO"],
     "adaptiveIcon": {
       "foregroundImage": "./assets/logo-only.png",
       "backgroundColor": "#FFFFFF"

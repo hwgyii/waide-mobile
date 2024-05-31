@@ -5,6 +5,7 @@ import { GestureHandlerRootView } from "react-native-gesture-handler";
 import * as api from "../../../utilities/api";
 import { Pressable } from "react-native";
 import EstablishmentPage from "./EstablishmentPage";
+import { MaterialIcons } from "@expo/vector-icons";
 
 export default function Establishments() {
   const [establishments, setEstablishments] = useState([]);
@@ -69,12 +70,38 @@ export default function Establishments() {
                               sx={{
                                 height: 75,
                                 width: "100%",
-                                justifyContent: "center",
+                                justifyContent: "space-between",
                                 bgColor: index % 2 === 0 ? "#FDA5A5" : "#D9D9D9",
+                                alignItems: "center",
+                                flexDirection: "row",
                                 marginBottom: 10,
                               }}
                             >
-                              <Text marginLeft={10} fontSize={20} fontWeight={"bold"}>{establishment.name}</Text>
+                              <Box
+                                sx={{
+                                  flexDirection: "row",
+                                  alignItems: "center",
+                                  width: "75%",
+                                }}
+                              >
+                                <Box
+                                  sx={{
+                                    height: 50,
+                                    width: 50,
+                                    borderRadius: 12,
+                                    bgColor: "#FFFFFF",
+                                    justifyContent: "center",
+                                    alignItems: "center",
+                                    marginLeft: 10,
+                                  }}
+                                >
+                                  <MaterialIcons name="store" size={50} color={"#f00b51"} />
+                                </Box>
+                                <Text marginLeft={10} fontSize={20} fontWeight={"bold"}>{establishment.name}</Text>
+                              </Box>
+                              <Box marginRight={10}>
+                                <MaterialIcons name="chevron-right" size={30} />
+                              </Box>
                           </Box>
                         </Pressable>
                       )
