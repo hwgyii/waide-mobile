@@ -15,8 +15,10 @@ import Authentication from "./src/pages/Authentication";
 import { getAuth, getEstablishment } from "./src/redux/reducers/auth.js";
 import AppNavigation from "./src/navigation/AppNavigation.jsx";
 import CustomerNavigation from "./src/navigation/CustomerNavigation.jsx";
+import usePushNotifications from "./src/utilities/usePushNotifications.js";
 
 function App() {
+  const { expoPushToken, notification } = usePushNotifications();
   const [isLoaded, setIsLoaded] = useState(false);
   const [componentToRender, setComponentToRender] = useState("Authentication");
   const dispatch = useDispatch();
@@ -54,7 +56,7 @@ function App() {
     getUser();
     setIsLoaded(true);
   }, []);
-
+  
   function Loading() {
     return (
       <Box

@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "1060569722461",
+    "project_id": "waide-push-notification",
+    "storage_bucket": "waide-push-notification.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1060569722461:android:ab996f8e799736671b67b4",
+        "android_client_info": {
+          "package_name": "com.hwgyii.waide"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBJuNVsMxKf_Bs48TuT_uyZvl1UOrZtapc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

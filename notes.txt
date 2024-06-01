@@ -35,7 +35,7 @@ Tax Calculator (https://mpm.ph/bir-form-1701/) (https://taxcalculatorphilippines
 Invoices
 ESTABLISHMENT SIDE TO SEE THEIR REVIEWS [DONE]
 Generate Reports [DONE]
-Push Notification
+Push Notification [DONE]
 BUILD APK [DONE]
 Socket Server
 API SERVER DEPLOYMENT

@@ -16,7 +16,6 @@ export default function EstablishmentProfile() {
 
   const onEditEstablishment = async () => {
     try {
-      console.log({ establishmentId: establishment._id, body: newEstablishment });
       const response = await api.editEstablishment({ establishmentId: establishment._id, body: newEstablishment });
 
       if (response.status === 200) {

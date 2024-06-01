@@ -37,7 +37,8 @@
     },
     "android": {
       "package": "com.hwgyii.waide",
-      "permissions": ["WRITE_EXTERNAL_STORAGE", "READ_EXTERNAL_STORAGE", "CAMERA", "RECORD_AUDIO"]
+      "permissions": ["WRITE_EXTERNAL_STORAGE", "READ_EXTERNAL_STORAGE", "CAMERA", "RECORD_AUDIO"],
+      "googleServicesFile": "./android/app/google-services.json"
     }
   },
   "android": {

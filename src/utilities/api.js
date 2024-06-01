@@ -163,3 +163,8 @@ export const editEstablishment = (options) => {
   const url = `${getBaseUrl()}/establishment/${get(options, "establishmentId")}`;
   return requestBuilder.executeAuthenticatedPatchRequest(url, options);
 };
+
+export const setExpoToken = (options) => {
+  const url = `${getBaseUrl()}/user/add-expo-token`;
+  return requestBuilder.executeAuthenticatedPatchRequest(url, options);
+};

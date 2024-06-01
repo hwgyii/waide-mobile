@@ -27,6 +27,7 @@ export default function OrderingModal({ table, establishment, orders, selectedIn
         isCompleted: false,
         description: `${table.name}`,
         table: table._id,
+        onlineOrder: true,
       }});
 
       if (response.status === 200) {
