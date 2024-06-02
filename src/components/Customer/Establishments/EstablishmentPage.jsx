@@ -56,28 +56,6 @@ export default function EstablishmentPage({ establishmentId, setComponent }) {
           )
         }
         {
-          get(establishment.settings, "invoiceEnabled", false) && (
-            <Pressable onPress={() => setComponentToRender("invoices")}>
-              <Box
-                sx={{
-                  height: 75,
-                  width: "100%",
-                  marginTop: 10,
-                  flexDirection: "row",
-                  alignItems: "center",
-                  justifyContent: "space-between",
-                  bgColor: "pink",
-                }}
-              >
-                <Text fontSize={20} fontWeight={"bold"} marginLeft={10} >Invoices</Text>
-                <Box marginRight={10}>
-                  <MaterialIcons name="chevron-right" size={30} />
-                </Box>
-              </Box>
-            </Pressable>
-          )
-        }
-        {
           get(establishment.settings, "tablesEnabled", false) && (
             <Pressable onPress={() => setComponentToRender("tables")}>
               <Box
@@ -463,8 +441,6 @@ export default function EstablishmentPage({ establishmentId, setComponent }) {
     switch (componentToRender) {
       case "inventories":
         return <EstablishmentInventories inventories={inventories} />;
-      case "invoices":
-        return <EstablishmentInvoices invoices={invoices} />;
       case "tables":
         return <EstablishmentTables tables={tables} />;
       case "reviews":
