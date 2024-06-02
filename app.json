@@ -23,6 +23,13 @@
           "microphonePermission": "Allow $(PRODUCT_NAME) to access your microphone",
           "recordAudioAndroid": true
         }
+      ],
+      [
+        "expo-notifications",
+        {
+          "icon": "./assets/logo-only.png",
+          "color": "#ffffff",
+        }
       ]
     ],
     "icon": "./assets/logo-only.png",
@@ -44,6 +51,7 @@
   "android": {
     "package": "com.waide.app",
     "permissions": ["WRITE_EXTERNAL_STORAGE", "READ_EXTERNAL_STORAGE", "CAMERA", "RECORD_AUDIO"],
+    "googleServicesFile": "./android/app/google-services.json",
     "adaptiveIcon": {
       "foregroundImage": "./assets/logo-only.png",
       "backgroundColor": "#FFFFFF"
