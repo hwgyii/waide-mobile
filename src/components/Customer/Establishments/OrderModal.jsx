@@ -20,6 +20,11 @@ export default function OrderModal({ establishment, orders, selectedInventories,
     try {
       e.preventDefault();
 
+      if (isEmpty(address)) {
+        alert("Please provide a delivery address.");
+        return;
+      }
+
       const response = await api.createDelivery({ body: {
         establishmentId: establishment._id,
         orders,
