@@ -43,7 +43,8 @@ export default function SignupBusiness({ setSignupToRender, setAuthenticationToR
         confirmPassword,
         businessName,
         address,
-        operatingHours
+        operatingHours,
+        role: 1
       };
 
       const response = await api.signUpBusiness({ body });

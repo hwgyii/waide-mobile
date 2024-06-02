@@ -25,6 +25,7 @@ export default function SignupCustomer({ setSignupToRender, setAuthenticationToR
         email,
         password,
         confirmPassword,
+        role: 2,
       };
 
       if (!firstName || !lastName || !email || !password || !confirmPassword) {
