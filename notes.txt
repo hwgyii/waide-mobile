@@ -64,3 +64,6 @@ Reservation - Try implement pa din pero pwedeng i-ask na lang and ilagay sa reco
 Customer App - Establishments (Add icon para makitang pwedeng pumasok) [DONE]
 Customer App - Lagay placeholders for images (30 minutes) [DONE]
 34 minutes - Summary reports
+
+
+WHEN CHECKING OUT OF ONLINE TABLE - REMOVE ACCESS OF CUSTOMER [DONE]
