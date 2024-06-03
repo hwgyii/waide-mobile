@@ -40,6 +40,12 @@ export default function OrderingModal({ table, establishment, orders, selectedIn
     } catch (error) {
       if (error.response && error.response.data.message) {
         alert(error.response.data.message);
+
+        if (error.response.data.message == "Table is not occupied.") {
+          setTable({});
+          setShowModal(false);
+          onClearOrders();
+        }
       };
     }
   };

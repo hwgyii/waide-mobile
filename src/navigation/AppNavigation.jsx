@@ -14,7 +14,7 @@ import Settings from "../pages/Settings";
 import TaxCalculator from "../pages/TaxCalculator";
 import Reports from "../pages/Reports";
 
-import { MaterialIcons } from "@expo/vector-icons";
+import { FontAwesome5, MaterialIcons } from "@expo/vector-icons";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 
@@ -27,6 +27,8 @@ import { TouchableOpacity } from "react-native";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import Reviews from "../pages/Reviews";
 import EstablishmentProfile from "../pages/EstablishmentProfile";
+import Invoices from "../components/Invoices/Invoices.jsx";
+import InvoicesCRUD from "../components/CRUD/Invoices/InvoicesCRUD.jsx";
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -90,6 +92,26 @@ export default function AppNavigation({ setAppToRender }) {
                   tabBarIcon: ({ focused }) => {
                     return (
                       <MaterialIcons name="menu-book" size={30} color={focused ? "blue" : "black"} />
+                    )
+                  },
+                }}
+              />
+            :
+              null
+        }
+        {
+          get(establishment.settings, "invoiceEnabled", false)
+            ?
+              <Tab.Screen 
+                name="Invoices"
+                component={Invoices}
+                options={{
+                  tabBarLabelStyle: {
+                    fontSize: 16,
+                  },
+                  tabBarIcon: ({ focused }) => {
+                    return (
+                      <FontAwesome5 name="file-invoice" size={30} color={focused ? "blue" : "black"} />
                     )
                   },
                 }}
@@ -204,6 +226,7 @@ export default function AppNavigation({ setAppToRender }) {
         <Drawer.Screen name="Establishment Profile" component={EstablishmentProfile}/>
         <Drawer.Screen name="Tables Settings" component={TablesCRUD} />
         <Drawer.Screen name="Inventories Settings" component={InventoriesCRUD} />
+        <Drawer.Screen name="Invoices Settings" component={InvoicesCRUD} />
         <Drawer.Screen name="Business Tax Calculator" component={TaxCalculator} />
         <Drawer.Screen name="Receipts" component={Receipts} />
         <Drawer.Screen name="Reports" component={Reports} />

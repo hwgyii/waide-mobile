@@ -1,0 +1,112 @@
+[
+  {
+    "name": "Invoice 0",
+    "description": "This is the description for Invoice 0",
+    "quantity": "Infinity",
+    "price": 20.99,
+    "archived": false,
+    "establishment": {
+      "$oid": "663482bf47baa37714fb9ee0"
+    },
+    "type": 1
+  },
+  {
+    "name": "Invoice 1",
+    "description": "This is the description for Invoice 1",
+    "quantity": "Infinity",
+    "price": 12.5,
+    "archived": false,
+    "establishment": {
+      "$oid": "663482bf47baa37714fb9ee0"
+    },
+    "type": 1
+  },
+  {
+    "name": "Invoice 2",
+    "description": "This is the description for Invoice 2",
+    "quantity": "Infinity",
+    "price": 30.75,
+    "archived": false,
+    "establishment": {
+      "$oid": "663482bf47baa37714fb9ee0"
+    },
+    "type": 1
+  },
+  {
+    "name": "Invoice 3",
+    "description": "This is the description for Invoice 3",
+    "quantity": "Infinity",
+    "price": 8.99,
+    "archived": false,
+    "establishment": {
+      "$oid": "663482bf47baa37714fb9ee0"
+    },
+    "type": 1
+  },
+  {
+    "name": "Invoice 4",
+    "description": "This is the description for Invoice 4",
+    "quantity": "Infinity",
+    "price": 50.0,
+    "archived": false,
+    "establishment": {
+      "$oid": "663482bf47baa37714fb9ee0"
+    },
+    "type": 1
+  },
+  {
+    "name": "Invoice 5",
+    "description": "This is the description for Invoice 5",
+    "quantity": "Infinity",
+    "price": 18.25,
+    "archived": false,
+    "establishment": {
+      "$oid": "663482bf47baa37714fb9ee0"
+    },
+    "type": 1
+  },
+  {
+    "name": "Invoice 6",
+    "description": "This is the description for Invoice 6",
+    "quantity": "Infinity",
+    "price": 10.0,
+    "archived": false,
+    "establishment": {
+      "$oid": "663482bf47baa37714fb9ee0"
+    },
+    "type": 1
+  },
+  {
+    "name": "Invoice 7",
+    "description": "This is the description for Invoice 7",
+    "quantity": "Infinity",
+    "price": 15.5,
+    "archived": false,
+    "establishment": {
+      "$oid": "663482bf47baa37714fb9ee0"
+    },
+    "type": 1
+  },
+  {
+    "name": "Invoice 8",
+    "description": "This is the description for Invoice 8",
+    "quantity": "Infinity",
+    "price": 22.75,
+    "archived": false,
+    "establishment": {
+      "$oid": "663482bf47baa37714fb9ee0"
+    },
+    "type": 1
+  },
+  {
+    "name": "Invoice 9",
+    "description": "This is the description for Invoice 9",
+    "quantity": "Infinity",
+    "price": 40.0,
+    "archived": false,
+    "establishment": {
+      "$oid": "663482bf47baa37714fb9ee0"
+    },
+    "type": 1
+  }
+]

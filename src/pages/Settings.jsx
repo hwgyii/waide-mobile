@@ -129,7 +129,7 @@ export default function Settings() {
             marginBottom: 15,
           }}
         >
-          <Box width={"100%"}>
+          <Box width={"62%"}>
             <HStack space="md"
               sx={{
                 marginLeft: 20
@@ -137,6 +137,16 @@ export default function Settings() {
             >
               <Switch size={"lg"} value={settings.inventoryEnabled} onToggle={() => onToggleSwitch("inventoryEnabled")}/>
               <Text>Inventory</Text>
+            </HStack>
+          </Box>
+          <Box width={"38%"}>
+            <HStack space="md"
+              sx={{
+                marginRight: 20
+              }}
+            >
+              <Switch size={"lg"} value={settings.invoiceEnabled} onToggle={() => onToggleSwitch("invoiceEnabled")}/>
+              <Text>Invoice</Text>
             </HStack>
           </Box>
         </Box>

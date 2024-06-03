@@ -13,7 +13,7 @@ import { getTables } from "../../redux/reducers/table";
 import { useFocusEffect } from "@react-navigation/native";
 import { updateOrders } from "../../redux/reducers/orders";
 
-export default function Inventories() {
+export default function Invoices() {
   const [isLoaded, setIsLoaded] = useState(false);
   // const [orders, setOrders] = useState([]);
   const { orders } = useSelector((state) => state.orders);
@@ -22,17 +22,17 @@ export default function Inventories() {
 
   const dispatch = useDispatch();
   const { establishment } = useSelector((state) => state.auth);
-  const { inventories } = useSelector((state) => state.inventories);
-  const { getInventories } = require("../../redux/reducers/inventory");
+  const { invoices } = useSelector((state) => state.invoices);
+  const { getInvoices } = require("../../redux/reducers/invoice");
 
   const [searchInventory, setSearchInventory] = useState("");
   const [filteredInventories, setFilteredInventories] = useState([]);
 
   const fetchInventories = async () => {
     try {
-      const response = await api.getInventories();
+      const response = await api.getInvoices();
       if (response.status === 200) {
-        dispatch(getInventories(response.data.inventories));
+        dispatch(getInvoices(response.data.inventories));
         setIsLoaded(true);
       }
     } catch (error) {
@@ -76,7 +76,7 @@ export default function Inventories() {
     if (searchInventory === "") {
       setFilteredInventories([]);
     } else {
-      setFilteredInventories(inventories.filter((inventory) => inventory.name.toLowerCase().includes(searchInventory.toLowerCase())));
+      setFilteredInventories(invoices.filter((inventory) => inventory.name.toLowerCase().includes(searchInventory.toLowerCase())));
     }
   }, [searchInventory]));
   
@@ -143,7 +143,7 @@ export default function Inventories() {
             - Better UI for the header
             - Find a better way to implement the header
         */}
-        <Text style={{ fontSize: 32, marginLeft: "35%", fontWeight: "bold" }}>Inventory</Text>
+        <Text style={{ fontSize: 32, marginLeft: "35%", fontWeight: "bold" }}>Invoices</Text>
         {/* <Input placeholder="Email"
             variant="outline"
             size="md"
@@ -182,7 +182,7 @@ export default function Inventories() {
           >
             {
               isLoaded ? //IF INVENTORIES ARE LOADED
-                inventories.length !== 0 ? // IF INVENTORIES ARE LOADED AND NOT EMPTY
+                invoices.length !== 0 ? // IF INVENTORIES ARE LOADED AND NOT EMPTY
                 searchInventory !== "" ? //IF USER SEARCHES FOR INVENTORIES
                   filteredInventories.length !== 0 ? //IF USER SEARCHES FOR INVENTORIES
                     filteredInventories.map((inventory, index) => {
@@ -200,7 +200,7 @@ export default function Inventories() {
                       <Text style={{ marginTop: "50%" }}>No Inventories found.</Text>
                     </Box>
                   : //ELSE RENDER ALL INVENTORIES
-                    inventories.map((inventory, index) => {
+                    invoices.map((inventory, index) => {
                       return (
                         <InventoryCard key={index} inventory={inventory} index={index} order={orders[inventory._id]} onSetOrder={onSetOrder}/>
                       );
@@ -212,7 +212,7 @@ export default function Inventories() {
                       alignItems: "center",
                     }}
                   >
-                    <Text style={{ marginTop: "50%" }}>No Inventories found.</Text>
+                    <Text style={{ marginTop: "50%" }}>No Invoices found.</Text>
                   </Box>
               : //ELSE RENDER LOADING SPINNER
                 <Box

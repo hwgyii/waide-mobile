@@ -168,3 +168,8 @@ export const setExpoToken = (options) => {
   const url = `${getBaseUrl()}/user/add-expo-token`;
   return requestBuilder.executeAuthenticatedPatchRequest(url, options);
 };
+
+export const getInvoices = () => {
+  const url = `${getBaseUrl()}/invoices/me`;
+  return requestBuilder.executeAuthenticatedGetRequest(url);
+};
