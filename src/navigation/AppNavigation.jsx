@@ -22,7 +22,7 @@ import * as api from "../utilities/api";
 import { getEstablishment } from "../redux/reducers/auth";
 import { get } from "lodash";
 import { createDrawerNavigator, DrawerContentScrollView, DrawerItemList } from "@react-navigation/drawer";
-import { Box, Divider, Image, Pressable, Text, View } from "@gluestack-ui/themed";
+import { Box, Divider, Image, Pressable, ScrollView, Text, View } from "@gluestack-ui/themed";
 import { TouchableOpacity } from "react-native";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import Reviews from "../pages/Reviews";
@@ -179,19 +179,21 @@ export default function AppNavigation({ setAppToRender }) {
     };
     return (
       <View style={{ flex: 1 }}>
-        <DrawerContentScrollView {...props}>
-          <Box
-            sx={{
-              height: 150,
-              backgroundColor: "#FE8383",
-              width: "100%",
-              marginTop: -5,
-            }}
-          >
-            <Text marginTop={20} marginLeft={10} fontSize={24} fontWeight="bold" color="black">{establishment.name}</Text>
-            <Text marginTop={10} marginLeft={10} fontSize={16} color="black">{establishment.address}</Text>
-          </Box>
-          <DrawerItemList {...props} />
+        <Box
+          sx={{
+            height: 150,
+            backgroundColor: "#FE8383",
+            width: "100%",
+            marginTop: -5,
+          }}
+        >
+          <Text marginTop={20} marginLeft={10} fontSize={24} fontWeight="bold" color="black">{establishment.name}</Text>
+          <Text marginTop={10} marginLeft={10} fontSize={16} color="black">{establishment.address}</Text>
+        </Box>
+        <DrawerContentScrollView {...props} style={{ marginTop: -20}}>
+          <ScrollView>
+            <DrawerItemList {...props} />
+          </ScrollView>
         </DrawerContentScrollView>
         <Pressable
           style={{ 
@@ -200,7 +202,7 @@ export default function AppNavigation({ setAppToRender }) {
             left: 0,
             bottom: 0,
             backgroundColor: "#DDDDDD",
-            padding: 20,
+            padding: 10,
           }}
         >
           <TouchableOpacity
