@@ -268,6 +268,7 @@ export default function Ordering() {
                     <ButtonText>Submit</ButtonText>
                   </Button>
                   <Text marginTop={10} marginBottom={10}>Or</Text>
+                  <Text marginTop={10} marginBottom={10}>Scan QR Code</Text>
                   <QRCodeScanner />
                 </Box>
               :
@@ -275,7 +276,7 @@ export default function Ordering() {
                   style={{
                     height: 870,
                     width: "100%",
-                    marginBottom: 450,
+                    marginBottom: 525,
                   }}
                 >
                   {

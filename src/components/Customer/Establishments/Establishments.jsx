@@ -57,7 +57,12 @@ export default function Establishments() {
         >
           <Text fontSize={32} fontWeight={"bold"}>Establishments</Text>
         </Box>
-        <ScrollView>
+        <ScrollView
+          sx={{
+            height: 520,
+            width: "100%",
+          }}
+        >
           {
             isLoaded
               ?

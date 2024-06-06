@@ -1,30 +1,33 @@
 import { Box, Pressable, SafeAreaView, ScrollView, Spinner, Text } from "@gluestack-ui/themed";
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
 
 import * as api from "../../../utilities/api";
 import dayjs from "dayjs";
 import ReceiptsModal from "./ReceiptsModal";
+import { useFocusEffect } from "@react-navigation/native";
 
 export default function CustomerReceipts() {
   const [receipts, setReceipts] = useState([]);
   const [isLoaded, setIsLoaded] = useState(false);
 
-  useEffect(() => {
-    const fetchDelivieries = async () => {
-      try {
-        const response = await api.getCustomerDeliveries();
-        if (response.status === 200) {
-          setReceipts(response.data.deliveries);
-          setIsLoaded(true);
+  useFocusEffect(
+    useCallback(() => {
+      const fetchDelivieries = async () => {
+        try {
+          const response = await api.getCustomerDeliveries();
+          if (response.status === 200) {
+            setReceipts(response.data.deliveries);
+            setIsLoaded(true);
+          }
+        } catch (error) {
+          console.error(error);
         }
-      } catch (error) {
-        console.error(error);
-      }
-    };
+      };
 
-    fetchDelivieries();
-  }, []);
+      fetchDelivieries();
+    }, [])
+  );
 
   return (
     <GestureHandlerRootView>
